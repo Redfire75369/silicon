@@ -1,0 +1,17 @@
+.scroll {
+	background-color: #3C77FF;
+	border-radius: 32px;
+	right: 18px;
+	padding: 8px;
+	position: fixed;
+	bottom: 16px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: #1E40AF;
+	}
+}
+
+.scroll-path {
+	fill: #000000;
+}

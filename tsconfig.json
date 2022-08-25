@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "jsx": "preserve",
+    "noEmit": true,
+    "alwaysStrict": false,
+    "strict": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "incremental": true,
+    "outFile": "gatsby-node.js"
+  },
+  "exclude": [
+    ".cache",
+    "node_modules"
+  ]
+}

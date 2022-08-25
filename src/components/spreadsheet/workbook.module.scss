@@ -1,0 +1,58 @@
+$base-font: #F3F3F3;
+$hover-font: #FBBF24;
+$active-bg: #1E40AF;
+$inactive-bg: #261C2C;
+$border: #C4B5FD;
+
+.workbook {
+	display: flex;
+	flex-direction: column;
+	font-family: "Segoe UI", sans-serif;
+
+	.navigation {
+		display: flex;
+		flex-direction: row;
+		align-items: stretch;
+		justify-content: center;
+		min-height: 40px;
+		max-height: 40px;
+
+		.tab {
+			display: flex;
+			flex-grow: 1;
+			align-items: center;
+			justify-content: center;
+
+			padding: 10px;
+
+			border-left: 0.5px inset;
+			border-right: 0.5px inset;
+			border-radius: 2px;
+
+			cursor: pointer;
+
+			&.link {
+				border-color: $border;
+				background: $inactive-bg;
+				color: $base-font;
+				text-decoration: none;
+			}
+
+			&.active {
+				color: $base-font;
+				background: $active-bg;
+				border-color: $border;
+			}
+
+			&.inactive {
+				color: $base-font;
+				background: $inactive-bg;
+				border-color: $border;
+
+				&:hover {
+					color: $hover-font;
+				}
+			}
+		}
+	}
+}

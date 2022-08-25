@@ -1,0 +1,74 @@
+name: Remote Dispatch Responder
+
+on:
+  repository_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Event Information
+        run: echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
+
+      - name: Check Event
+        if: github.event.action != 'dispatch_initiate'
+        run: exit 1
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          token: "${{ secrets.ACCESS_TOKEN }}"
+          submodules: "recursive"
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          cache: yarn
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v1
+        with:
+          static_site_generator: gatsby
+
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            public
+            .cache
+          key: ${{ runner.os }}-gatsby-build-${{ hashFiles('public') }}
+          restore-keys: ${{ runner.os }}-gatsby-build-
+         
+      - name: Install Dependencies
+        run: yarn install
+      - name: Build with Gatsby
+        run: yarn build
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
