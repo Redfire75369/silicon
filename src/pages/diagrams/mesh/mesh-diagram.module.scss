@@ -1,0 +1,28 @@
+$width: max(80vw, min(95vw, 700px));
+
+body {
+	margin: 0;
+}
+
+hr {
+	min-width: $width;
+	max-width: $width;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	min-height: 100vh;
+
+	font-family: Helvetica, Arial, sans-serif;
+	background: linear-gradient(#2A2A2A, #1C1C1C);
+
+	padding-bottom: 40px
+}
+
+.header {
+	color: #E5E7EB;
+}
+

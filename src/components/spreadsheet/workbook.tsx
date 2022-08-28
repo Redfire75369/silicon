@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
 
+import Layout from "../layout";
+import {MetaProps} from "../meta";
 import WorksheetUI from "./worksheet";
+import {Worksheet} from "../../types";
 
 // @ts-ignore
 import {active, inactive, link, navigation, tab, workbook} from "./workbook.module.scss";
-import {Worksheet} from "../../types";
-import Layout from "../layout";
-import {MetaProps} from "../meta";
 
 type WorkbookProps = {
 	meta: MetaProps

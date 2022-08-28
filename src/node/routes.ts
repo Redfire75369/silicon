@@ -18,7 +18,7 @@ export const navigation = {
 };
 
 export const orders = {
-	"": ["earnings", "events", "spreadsheets"],
+	"": ["diagrams", "earnings", "events", "spreadsheets"],
 	"events/": ["amd", "intel", "hot-chips"]
 };
 

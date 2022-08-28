@@ -1,7 +1,8 @@
-import * as React from "react";
-import Summary from "./summary/summary";
-import {MetaProps} from "./meta";
 import {graphql, useStaticQuery} from "gatsby";
+import React from "react";
+
+import {MetaProps} from "./meta";
+import Summary from "./summary/summary";
 import routes, {navigation, orders} from "../node/routes";
 
 interface NavigationProps {

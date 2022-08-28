@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from "react";
 import CSS from "csstype";
+import React, {useEffect, useState} from "react";
+
+import {cellToHyperlink, cellToString} from "../../spreadsheet/cell";
+import excelColour from "../../spreadsheet/excel-colour";
+import {CellBorders, getBorder, getMerges} from "../../spreadsheet/styling";
 import {Cell, Worksheet} from "../../types";
-import {CellBorders, getBorder, getMerges} from "../../node/styling";
-import {cellToHyperlink, cellToString} from "../../node/cell";
-import excelColour from "../../node/excel-colour";
 
 // @ts-ignore
 import {container, scrollable, sticky, table} from "./worksheet.module.scss";
@@ -110,7 +111,6 @@ function WorksheetUI({worksheet}: WorksheetProps) {
 				}
 			}
 		}
-
 
 		const trueBorder: CellBorders = {};
 

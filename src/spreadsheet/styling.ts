@@ -1,7 +1,7 @@
 import {Border, Borders, BorderStyle} from "exceljs";
 
-import {Worksheet} from "../types";
 import excelColour from "./excel-colour";
+import {Worksheet} from "../../types";
 
 export type Merge = {
 	primary: boolean,

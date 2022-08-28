@@ -1,0 +1,40 @@
+$width: max(80vw, min(95vw, 700px));
+
+
+.logo {
+	left: 24px;
+	position: absolute;
+	top: 24px;
+}
+
+.header {
+	min-width: $width;
+	max-width: $width;
+	margin: 0.5rem 0;
+
+
+	.header-inner {
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+
+		img {
+			margin-top: 0.5rem;
+			align-self: start;
+			justify-self: center;
+			height: 5rem;
+			width: 5rem;
+		}
+
+		.title {
+			text-align: center;
+			min-width: calc(#{$width} - 10rem);
+			max-width: calc(#{$width} - 10rem);
+
+			h1 {
+				font-size: 2.5rem;
+				color: #E5E7EB;
+			}
+		}
+	}
+}

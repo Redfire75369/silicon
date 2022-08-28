@@ -1,5 +1,6 @@
-import * as React from "react";
+import React from "react";
 import {graphql, PageProps} from "gatsby";
+
 import Summary from "../components/summary/summary";
 import Navigation from "../components/navigation";
 

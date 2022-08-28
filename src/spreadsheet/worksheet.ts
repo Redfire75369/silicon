@@ -1,6 +1,7 @@
-import {Cell, Column, Range, Row, Worksheet} from "../types";
 import {Workbook} from "exceljs";
+
 import {WorksheetMetadata} from "./workbook";
+import {Cell, Column, Range, Row, Worksheet} from "../../types";
 
 export default function getWorksheet(workbook: Workbook, metadata: WorksheetMetadata): Worksheet {
 	const worksheet = workbook.getWorksheet(metadata[0]);

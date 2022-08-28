@@ -1,7 +1,8 @@
-import * as React from "react";
+import React from "react";
 import {graphql, PageProps} from "gatsby";
-import {Worksheet} from "../../types";
+
 import WorkbookUI from "../../components/spreadsheet/workbook";
+import {Worksheet} from "../../types";
 
 export const query = graphql`
 	query ($id: String) {

@@ -32,7 +32,14 @@ const config: GatsbyConfig = {
 			resolve: "gatsby-source-filesystem",
 			options: {
 				name: "workbooks",
-				path: "./content/workbooks",
+				path: "./content/spreadsheets",
+			},
+		},
+		{
+			resolve: "gatsby-source-filesystem",
+			options: {
+				name: "diagrams",
+				path: "./content/diagrams",
 			},
 		},
 

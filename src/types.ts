@@ -37,7 +37,9 @@ export interface Worksheet {
 	state: string,
 	rows: Row[],
 	columns: Column[],
-	merges: { [cell: string]: Range },
+	merges: {
+		[cell: string]: Range
+	},
 	properties: WorksheetProperties,
 	views: Partial<WorksheetView>[],
 }

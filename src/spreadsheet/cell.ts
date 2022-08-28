@@ -1,6 +1,6 @@
 import {format} from "ssf";
 
-import {Cell} from "../types";
+import {Cell} from "../../types";
 
 export function cellToString(cell: Cell): string {
 	if (cell.value) {

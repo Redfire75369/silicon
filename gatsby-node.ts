@@ -1,11 +1,13 @@
-import type {GatsbyNode} from "gatsby";
-
-import {getWorkbook, workbook_metadata} from "./src/node/workbook";
-import getWorksheet from "./src/node/worksheet";
-import {join} from "path";
-import {existsSync, mkdirSync} from "fs";
 import {CsvWriteOptions} from "exceljs";
+import {existsSync, mkdirSync} from "fs";
+import type {GatsbyNode} from "gatsby";
+import {join} from "path";
+
+import diagrams from "./src/drawio/diagrams";
+import saveDiagram from "./src/drawio/svg";
 import routes from "./src/node/routes";
+import {getWorkbook, workbook_metadata} from "./src/spreadsheet/workbook";
+import getWorksheet from "./src/spreadsheet/worksheet";
 
 const spreadsheetMediaType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
@@ -45,7 +47,7 @@ export async function onCreateNode(...args: Parameters<CreateNodeCallback>): Pro
 		const keys = Object.keys(metadata.sheets);
 		for (let i = 0; i < keys.length; i++) {
 			options.sheetName = metadata.sheets[keys[i]][0];
-			const folder = join(process.cwd(), "content", "workbooks", "generated", node.relativePath.split("/")[1].split(".")[0]);
+			const folder = join(process.cwd(), "content", "spreadsheets", "generated", node.relativePath.split("/")[1].split(".")[0]);
 			const path = join(folder, `${keys[i]}.csv`);
 			console.info(`[CSV]: Writing to ${path}`);
 			if (!existsSync(folder)) {
@@ -53,6 +55,29 @@ export async function onCreateNode(...args: Parameters<CreateNodeCallback>): Pro
 			}
 
 			await workbook.csv.writeFile(path, options);
+		}
+	} else if (typeof node.relativePath === "string" && node.relativePath.endsWith(".drawio") && typeof node.name === "string") {
+		if (node.name in diagrams) {
+			const diagram = diagrams[node.name];
+			for (const variant in diagram.variants) {
+				const inner = diagram.variants[variant];
+				const saved = await saveDiagram(node.relativePath, node.name, variant);
+
+				const diagramNode = {
+					name: inner.name,
+					variant,
+					diagrams: saved,
+					id: createNodeId(`${node.id} ${variant} >>> ${diagram.type} Diagram`),
+					children: [],
+					parent: node.id,
+					internal: {
+						contentDigest: createContentDigest(saved.join(",")),
+						type: `${diagram.type}Diagram`,
+					},
+				};
+
+				createNode(diagramNode);
+			}
 		}
 	}
 }
