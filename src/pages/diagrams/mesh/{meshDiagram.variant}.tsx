@@ -35,20 +35,6 @@ function MeshDiagrams({data}: PageProps<Query>) {
 		title: meshInfo.name,
 	};
 
-	const svgRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-	useEffect(function() {
-		for (let i = 0; i < meshInfo.dies.length; i++) {
-			const svg = svgRefs.current[i].children[0];
-			const component = checkChildrenFor(svg, meshInfo.die_names[i]);
-
-			if (component !== null) {
-				// @ts-ignore
-				component.style.color = "#E0E0E0";
-			}
-		}
-	}, []);
-
 	function checkChildrenFor(element: Element, text: string): Element | null {
 		for (const child of element.children) {
 			if (child.innerHTML === text) {
@@ -69,7 +55,7 @@ function MeshDiagrams({data}: PageProps<Query>) {
 					mesh.diagrams.map((diagram, index) => {
 						return (
 							<Fragment key={meshInfo.dies[index]}>
-								<div ref={(ref) => svgRefs.current.push(ref)} dangerouslySetInnerHTML={{ __html: diagram }}></div>
+								<div dangerouslySetInnerHTML={{ __html: diagram }}></div>
 								{index !== mesh.diagrams.length - 1 ? <hr/> : <></>}
 							</Fragment>
 						);

@@ -28,6 +28,9 @@ jobs:
         with:
           token: "${{ secrets.ACCESS_TOKEN }}"
           submodules: "recursive"
+      
+      - name: Update Submodules
+        run: git submodule update --recursive --remote
 
       - name: Setup Node
         uses: actions/setup-node@v3
