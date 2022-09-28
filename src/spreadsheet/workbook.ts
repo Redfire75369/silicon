@@ -19,30 +19,30 @@ export const workbook_metadata: { [key: string]: WorkbookMetadata } = {
 	cpus: {
 		name: "CPUs",
 		sheets: {
-			desktop: ["Desktop", 18, 52],
-			mobile: ["Mobile", 18, 68],
-			"hedt-workstation": ["HEDT & Workstation", 18, 26],
+			desktop: ["Desktop", 19, 25],
+			mobile: ["Mobile", 19, 68],
+			"hedt-workstation": ["HEDT & Workstation", 18, 23],
 			server: ["Server", 19, 151],
-			legend: ["Legend", 9, 32],
+			legend: ["Legend", 9, 33],
 		}
 	},
 	gpus: {
 		name: "GPUs",
 		sheets: {
-			desktop: ["Desktop", 21, 27],
+			desktop: ["Desktop", 21, 25],
 			mobile: ["Mobile", 20, 30],
-			workstation: ["Workstation", 22, 32],
-			server: ["Server", 33, 18],
+			workstation: ["Workstation", 22, 26],
+			server: ["Server", 34, 12],
 			legend: ["Legend", 7, 16],
 		},
 	},
 	"capital-expenditure": {
 		name: "Capital Expenditure",
 		sheets: {
-			annual: ["Annual", 7, 54],
+			annual: ["Annual", 8, 59],
 			quarterly: ["Quarterly", 20, 52],
-			planned: ["Planned", 11, 110],
-			completed: ["Completed", 12, 5],
+			planned: ["Planned", 11, 112],
+			completed: ["Completed", 12, 6],
 		},
 	},
 };
