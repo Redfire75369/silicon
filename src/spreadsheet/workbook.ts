@@ -29,10 +29,10 @@ export const workbook_metadata: { [key: string]: WorkbookMetadata } = {
 	gpus: {
 		name: "GPUs",
 		sheets: {
-			desktop: ["Desktop", 21, 25],
+			desktop: ["Desktop", 21, 11],
 			mobile: ["Mobile", 20, 30],
 			workstation: ["Workstation", 22, 26],
-			server: ["Server", 34, 12],
+			server: ["Server", 34, 15],
 			legend: ["Legend", 7, 16],
 		},
 	},
