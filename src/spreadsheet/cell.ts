@@ -1,6 +1,6 @@
 import {format} from "ssf";
 
-import {Cell} from "../../types";
+import {Cell} from "../types";
 
 export function cellToString(cell: Cell): string {
 	if (cell.value) {
@@ -23,7 +23,7 @@ export function cellToString(cell: Cell): string {
 			}
 
 			return format(fmt, cell.value);
-		} else if (cell.value?.hyperlink) {
+		} else if (typeof cell.value === "object" && typeof cell.value?.hyperlink === "string") {
 			return cell.value.text;
 		} else {
 			return cell.value.toString();
