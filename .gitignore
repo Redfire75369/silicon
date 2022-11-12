@@ -1,9 +1,13 @@
+### Gatsby ###
 .cache/
-node_modules/
 public/
 
+### Node.js/Yarn ###
+.yarn/*
+!.yarn/releases
+node_modules/*
 yarn-error.log
 
-src/**/*.js
-
+### Edtitors ###
+## WebStorm ##
 .idea/**

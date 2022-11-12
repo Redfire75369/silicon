@@ -28,14 +28,14 @@ jobs:
         with:
           token: "${{ secrets.ACCESS_TOKEN }}"
           submodules: "recursive"
-      
+
       - name: Update Submodules
         run: git submodule update --recursive --remote
 
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: "18"
           cache: yarn
       - name: Setup Pages
         id: pages
@@ -53,9 +53,11 @@ jobs:
           restore-keys: ${{ runner.os }}-gatsby-build-
 
       - name: Install Dependencies
-        run: yarn install
+        run: yarn install --immutable
+
       - name: Build with Gatsby
         run: yarn build
+
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v1
         with:
