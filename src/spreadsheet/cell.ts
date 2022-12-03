@@ -23,7 +23,7 @@ export function cellToString(cell: Cell): string {
 			}
 
 			return format(fmt, cell.value);
-		} else if (typeof cell.value === "object" && typeof cell.value?.hyperlink === "string") {
+		} else if (typeof cell.value === "object" && "hyperlink" in cell.value && typeof cell.value?.hyperlink === "string") {
 			return cell.value.text;
 		} else {
 			return cell.value.toString();

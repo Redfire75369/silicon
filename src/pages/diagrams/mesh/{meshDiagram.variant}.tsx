@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useRef} from "react";
+import React, {Fragment} from "react";
 import {graphql, PageProps} from "gatsby";
 
 import Meta from "../../../components/meta";
@@ -34,17 +34,6 @@ function MeshDiagrams({data}: PageProps<Query>) {
 		author: "Redfire",
 		title: meshInfo.name,
 	};
-
-	function checkChildrenFor(element: Element, text: string): Element | null {
-		for (const child of element.children) {
-			if (child.innerHTML === text) {
-				return child;
-			} else if (child.innerHTML.includes(text)) {
-				return checkChildrenFor(child, text);
-			}
-		}
-		return null;
-	}
 
 	return (
 		<>

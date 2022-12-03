@@ -1,4 +1,3 @@
-import {MDXRenderer} from "gatsby-plugin-mdx";
 import React, {ReactChild} from "react";
 
 import Header from "../header";
@@ -21,9 +20,7 @@ function Summary({meta, mdx, children}: SummaryProps) {
 			<main className={container}>
 				<Header title={meta.title}/>
 				<div className={markdown}>
-					<MDXRenderer>
-						{mdx}
-					</MDXRenderer>
+					{mdx}
 					{children}
 				</div>
 				<div>

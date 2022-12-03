@@ -9,17 +9,17 @@ const routes = [
 ];
 
 export const navigation = {
-	"/earnings/intel/2021": "2021",
-	"/earnings/tsmc/2021": "2021",
-	"/events/amd": "AMD",
-	"/events/intel": "Intel",
-	"/events/hot-chips": "Hot Chips",
-	"/events/hot-chips/33/google": "Google",
+	"/earnings/intel/2021/": "2021",
+	"/earnings/tsmc/2021/": "2021",
+	"/events/amd/": "AMD",
+	"/events/intel/": "Intel",
+	"/events/hot-chips/": "Hot Chips",
+	"/events/hot-chips/33/google/": "Google",
 };
 
 export const orders = {
-	"": ["diagrams", "earnings", "events", "spreadsheets"],
-	"events/": ["amd", "intel", "hot-chips"]
+	"/": ["diagrams", "earnings", "events", "spreadsheets"],
+	"/events/": ["hot-chips", "amd", "intel"],
 };
 
 export default routes;

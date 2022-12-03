@@ -4,6 +4,7 @@ import React from "react";
 import {MetaProps} from "./meta";
 import Summary from "./summary/summary";
 import routes, {navigation, orders} from "../node/routes";
+import {slugify} from "../util";
 
 interface NavigationProps {
 	meta: MetaProps,
@@ -20,9 +21,11 @@ type SlugMap = {
 interface Node {
 	frontmatter: {
 		title: string,
-		navigation?: string,
+		navigation: string | null,
 	},
-	slug: string
+	parent: {
+		relativePath: string,
+	}
 }
 
 interface Query {
@@ -34,28 +37,32 @@ interface Query {
 function Navigation({meta, mdx, slug}: NavigationProps) {
 	const query: Query = useStaticQuery(graphql`
 		query NavigationQuery {
-			allMdx(
-				filter: {slug: {glob: "!mlid/**"}}
-				sort: {order: DESC, fields: frontmatter___date}
-			) {
+			allMdx(sort: {frontmatter: {date: ASC}}) {
 				nodes {
 					frontmatter {
 						title
 						navigation
 					}
-					slug
+					parent {
+						... on File {
+							relativePath
+						}
+					}
 				}
 			}
 		}
 	`);
 	const existing = slug.split("/").length;
 
-	let nodes = query.allMdx.nodes.filter(node => node.slug.startsWith(slug) && node.slug !== slug)
+	let nodes = query.allMdx.nodes.filter(node => {
+		const nodeSlug = slugify(node.parent.relativePath);
+		return nodeSlug.startsWith(slug) && nodeSlug !== slug && nodeSlug.includes("/mlid") === slug.includes("/mlid");
+	});
 	for (const [name, order] of Object.entries(orders)) {
 		if (slug == name) {
 			nodes = nodes.sort((a, b) => {
-				const path1 = a.slug.split("/").slice(existing - 1).join("/");
-				const path2 = b.slug.split("/").slice(existing - 1).join("/");
+				const path1 = slugify(a.parent.relativePath).split("/").slice(existing - 1).join("/");
+				const path2 = slugify(b.parent.relativePath).split("/").slice(existing - 1).join("/");
 
 				const index1 = order.findIndex((p) => path1.startsWith(p));
 				const index2 = order.findIndex((p) => path2.startsWith(p));
@@ -70,13 +77,13 @@ function Navigation({meta, mdx, slug}: NavigationProps) {
 
 	const map: SlugMap = {}
 	nodes.forEach(node => {
-		let slug = node.slug;
+		const slug = slugify(node.parent.relativePath);
 
 		const segments = slug.split("/").slice(existing - 1).filter(s => s !== "");
 		let m = map;
 		for (let i = 0; i < segments.length; i++) {
 			const segment = segments[i];
-			if (m[segment] === undefined) {
+			if (map[segment] === undefined) {
 				m[segment] = {}
 			}
 			m = m[segment];
@@ -94,15 +101,15 @@ function Navigation({meta, mdx, slug}: NavigationProps) {
 						}
 
 						if (typeof value.index !== "string") {
-							let href = `${slug}${key}`;
-
+							const href = `${slug}/${key}/`.replace("//", "/");
+							const node = nodes.find(node => href === slugify(node.parent.relativePath));
 							return <li key={key}>
-								{navigation[`/${href}`] ?? `Unknown: ${href} ${key}`}
+								{node?.frontmatter?.navigation ?? navigation[href] ?? `Unknown: ${slug} ${key}`}
 								<NavigationSection map={value} slug={href}/>
 							</li>;
 						}
 
-						let href = `/${slug}/${key}`.replace("//", "/");
+						let href = `${slug}/${key}`.replace("//", "/");
 
 						for (const route of routes) {
 							const matches = route.regex.exec(href);

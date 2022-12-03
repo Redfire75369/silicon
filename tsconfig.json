@@ -23,7 +23,6 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "incremental": true,
-    "outFile": "gatsby-node.js"
   },
   "exclude": [
     ".cache",

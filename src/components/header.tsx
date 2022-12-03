@@ -1,7 +1,7 @@
 import React from "react";
 
 //@ts-ignore
-import {header, headerInner, logo, title} from "./header.module.scss";
+import {header, headerInner, logo, small, title} from "./header.module.scss";
 
 interface HeaderProps {
 	title: string,
@@ -21,10 +21,10 @@ function Header(props: HeaderProps) {
 						<h1>{props.title}</h1>
 					</div>
 					<a href="https://twitter.com/Redfire75369">
-						<img src="images/twitter.png" alt="Twitter"/>
+						<img src="/images/twitter.png" alt="Twitter" className={small}/>
 					</a>
 					<a href="https://mastodon.online/@redfire" rel="me">
-						<img src="images/mastodon.png" alt="Mastodon"/>
+						<img src="/images/mastodon.png" alt="Mastodon" className={small}/>
 					</a>
 				</div>
 				<hr/>

@@ -4,6 +4,7 @@ public/
 
 ### Node.js/Yarn ###
 .yarn/*
+!.yarn/plugins
 !.yarn/releases
 node_modules/*
 yarn-error.log

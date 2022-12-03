@@ -1,6 +1,5 @@
 $width: max(80vw, min(95vw, 700px));
 
-
 .logo {
 	left: 24px;
 	position: absolute;
@@ -18,18 +17,30 @@ $width: max(80vw, min(95vw, 700px));
 		flex-direction: row;
 		justify-content: start;
 
-		img {
-			margin-top: 0.5rem;
-			align-self: start;
-			justify-self: center;
-			height: 5rem;
-			width: 5rem;
+		a {
+			display: flex;
+			flex-direction: row;
+			margin-left: 0.25rem;
+			margin-right: 0.25rem;
+
+			img {
+				margin-top: 0.5rem;
+				align-self: center;
+				justify-self: center;
+				height: 5rem;
+				width: 5rem;
+			}
+
+			img.small {
+				height: 2.25rem;
+				width: 2.25rem;
+			}
 		}
 
 		.title {
 			text-align: center;
-			min-width: calc(#{$width} - 10rem);
-			max-width: calc(#{$width} - 10rem);
+			min-width: calc(#{$width} - 11rem);
+			max-width: calc(#{$width} - 11rem);
 
 			h1 {
 				font-size: 2.5rem;
