@@ -1,11 +1,13 @@
-import {getWorkbook, workbook_metadata} from "../spreadsheet/workbook";
-import getWorksheet from "../spreadsheet/worksheet";
-import {CsvWriteOptions} from "exceljs";
-import {join} from "path";
+import type {CsvWriteOptions} from "exceljs";
 import {existsSync, mkdirSync} from "fs";
+import type {GatsbyNode} from "gatsby";
+import {resolve} from "path";
+
 import diagrams from "../drawio/diagrams";
 import saveDiagram from "../drawio/svg";
-import {GatsbyNode} from "gatsby";
+import {getWorkbook, metadata as meta} from "../spreadsheet/workbook";
+import getWorksheet from "../spreadsheet/worksheet";
+import {contentDir} from "../constants";
 
 type CreateNodeCallback = GatsbyNode["onCreateNode"];
 
@@ -16,7 +18,7 @@ export async function handleNodeCreate(...args: Parameters<CreateNodeCallback>):
 	const {createNode, createParentChildLink} = actions;
 	if (node.internal.mediaType === spreadsheetMediaType && typeof node.relativePath === "string" && typeof node.name === "string") {
 		const workbook = await getWorkbook(node.relativePath);
-		const metadata = workbook_metadata[node.name];
+		const metadata = meta[node.name];
 
 		const worksheets = Object.values(metadata.sheets).map(meta => getWorksheet(workbook, meta));
 
@@ -45,8 +47,8 @@ export async function handleNodeCreate(...args: Parameters<CreateNodeCallback>):
 		const keys = Object.keys(metadata.sheets);
 		for (let i = 0; i < keys.length; i++) {
 			options.sheetName = metadata.sheets[keys[i]][0];
-			const folder = join(process.cwd(), "content", "spreadsheets", "generated", node.relativePath.split("/")[1].split(".")[0]);
-			const path = join(folder, `${keys[i]}.csv`);
+			const folder = resolve(contentDir, "spreadsheets", "generated", node.relativePath.split("/")[1].split(".")[0]);
+			const path = resolve(folder, `${keys[i]}.csv`);
 			console.info(`[CSV]: Writing to ${path}`);
 			if (!existsSync(folder)) {
 				mkdirSync(folder, {recursive: true});

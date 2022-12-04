@@ -2,18 +2,15 @@
   "name": "silicon",
   "version": "1.0.0",
   "private": true,
-  "description": "silicon",
   "type": "commonjs",
   "author": "Redfire",
   "packageManager": "yarn@3.2.4",
-  "keywords": [
-    "gatsby"
-  ],
   "scripts": {
     "develop": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "onedrive-sync": "yarn onedrive:sync"
   },
   "dependencies": {
     "@mdx-js/mdx": "2.1.5",
@@ -49,5 +46,8 @@
     "@types/react-dom": "18.0.9",
     "@types/react-helmet": "6.1.6",
     "typescript": "4.9.3"
-  }
+  },
+  "workspaces": [
+    "onedrive"
+  ]
 }

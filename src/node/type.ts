@@ -1,4 +1,4 @@
-import {GatsbyNode} from "gatsby";
+import type {GatsbyNode} from "gatsby";
 
 type SchemaCustomisationCallback = GatsbyNode["createSchemaCustomization"];
 

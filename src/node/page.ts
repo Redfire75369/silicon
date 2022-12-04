@@ -1,7 +1,8 @@
-import {GatsbyNode} from "gatsby";
-import path from "path";
+import type {GatsbyNode} from "gatsby";
+import {join} from "path";
 
 import routes from "./routes";
+import {rootDir} from "../constants";
 import {slugify} from "../util";
 
 type CreatePageCallback = GatsbyNode["onCreatePage"];
@@ -65,7 +66,7 @@ export async function handleCreatePages(...args: Parameters<CreatePagesCallback>
 		reporter.panicOnBuild("Error loading MDX result", query.errors)
 	}
 
-	const template = path.join(process.cwd(), "src/templates/summary.tsx")
+	const template = join(rootDir, "src", "templates", "summary.tsx");
 
 	query.data.allMdx.nodes.forEach(node => {
 		const slug = slugify(node.parent.relativePath);

@@ -2,6 +2,9 @@
 .cache/
 public/
 
+### Dotenv ###
+.env
+
 ### Node.js/Yarn ###
 .yarn/*
 !.yarn/plugins
@@ -12,3 +15,6 @@ yarn-error.log
 ### Edtitors ###
 ## WebStorm ##
 .idea/**
+
+### Other ###
+onedrive/.cache.json

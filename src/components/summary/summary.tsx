@@ -1,4 +1,4 @@
-import React, {ReactChild} from "react";
+import React, {ReactNode} from "react";
 
 import Header from "../header";
 import Meta, {MetaProps} from "../meta";
@@ -10,7 +10,7 @@ import {container, markdown} from "./summary.module.scss";
 interface SummaryProps {
 	meta: MetaProps,
 	mdx: string,
-	children?: ReactChild | ReactChild[]
+	children?: ReactNode | ReactNode[]
 }
 
 function Summary({meta, mdx, children}: SummaryProps) {
