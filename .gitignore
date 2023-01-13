@@ -1,0 +1,26 @@
+### SvelteKit ###
+.svelte-kit/
+build/
+package/
+
+### Vite ###
+vite.config.ts.timestamp-*
+
+### Dotenv ###
+.env
+.env.*
+!.env.sample
+
+### Node.js/Yarn ###
+.yarn/*
+!.yarn/plugins
+!.yarn/releases
+node_modules/*
+yarn-error.log
+
+### Edtitors ###
+## WebStorm ##
+.idea/**
+
+### Other ###
+onedrive/.cache.json
