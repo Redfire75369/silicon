@@ -1,5 +1,5 @@
-import type {PageLoadEvent} from "./$types";
 import {error} from "@sveltejs/kit";
+import type {PageLoadEvent} from "./$types";
 
 /** @type {import("./$types").PageLoad} */
 export async function load({params}: PageLoadEvent) {
@@ -7,30 +7,31 @@ export async function load({params}: PageLoadEvent) {
 		title: string,
 	}
 
+	const slug = params.slug;
+	let mdsvex;
+
 	try {
-		const slug = params.slug;
-		const mdsvex = await import(`../../content/${slug}.svx`);
-
-		const metadata = mdsvex.metadata;
-		const body = mdsvex.default;
-
-		if (body !== undefined) {
-			throw error(404, "Failed to Parse MDSveX");
+		try {
+			mdsvex = await import(`../../content/${slug}.svx`);
+		} catch {
+			mdsvex = await import(`../../content/${slug}/index.svx`);
 		}
-
-		return {
-			slug,
-			body,
-			metadata: {
-				title: metadata.title,
-			} satisfies Metadata,
-		};
-	} catch (e: any) {
-		if (typeof e.status === "number") {
-			throw error(e.status, e.body);
-		} else {
-			throw error(404, "Not Found");
-		}
-
+	} catch {
+		throw error(404, "Not Found");
 	}
+	console.log(slug);
+
+
+	const metadata: Metadata = mdsvex.metadata;
+	const body = mdsvex.default;
+
+	if (body === undefined) {
+		throw error(404, "Failed to Parse MDSveX");
+	}
+
+	return {
+		slug,
+		body,
+		metadata,
+	};
 }

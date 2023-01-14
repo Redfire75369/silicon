@@ -1,7 +1,3 @@
-<script>
-	export let title;
-</script>
-
 <style lang="scss">
 	$width: max(80vw, min(95vw, 700px));
 
@@ -52,13 +48,15 @@
 <div class="header">
 	<div class="header-inner">
 		<a href="/">
-			<img src="/images/icon.png">
+			<img src="/images/icon.png" alt="Silicon Logo">
 		</a>
 		<div class="title">
-			<h1>{title}</h1>
+			<h1>
+				<slot/>
+			</h1>
 		</div>
 		<a href="https://mastodon.online/@redfire" rel="me">
-			<img src="/images/mastodon.png" alt="Mastodon" class="small">
+			<img src="/images/mastodon.png" alt="Mastodon Logo" class="small">
 		</a>
 	</div>
 </div>

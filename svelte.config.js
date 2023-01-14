@@ -13,6 +13,18 @@ const config = {
 		adapter: adapter({
 			pages: "build"
 		}),
+		alias: {
+			"components": "src/components",
+			"content": "src/content",
+		}
+	},
+	onwarn: (warning, handler) => {
+		const {code} = warning;
+		if (code === "css-unused-selector") {
+			return;
+		}
+
+		handler(warning);
 	},
 };
 
