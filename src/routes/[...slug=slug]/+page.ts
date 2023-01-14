@@ -10,17 +10,14 @@ export async function load({params}: PageLoadEvent) {
 	const slug = params.slug;
 	let mdsvex;
 
-	try {
-		try {
-			mdsvex = await import(`../../content/${slug}.svx`);
-		} catch {
-			mdsvex = await import(`../../content/${slug}/index.svx`);
-		}
-	} catch {
-		throw error(404, "Not Found");
+	const matches = import.meta.glob(`../../content/**/*.svx`);
+	if (matches[`../../content/${slug}.svx`]) {
+		mdsvex = await matches[`../../content/${slug}.svx`]();
+	} else if (matches[`../../content/${slug}/index.svx`]) {
+		mdsvex = await matches[`../../content/${slug}/index.svx`]();
+	} else {
+		throw error(404, "Page Not Found");
 	}
-	console.log(slug);
-
 
 	const metadata: Metadata = mdsvex.metadata;
 	const body = mdsvex.default;

@@ -1,4 +1,4 @@
 /** @type import("@sveltejs/kit").ParamMatcher */
-export function match(param: string) {
+export function match(_: string) {
 	return true;
 }

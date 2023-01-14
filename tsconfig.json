@@ -8,22 +8,27 @@
 			"dom.iterable",
 			"esnext"
 		],
+		"moduleResolution": "node",
+
 		"jsx": "preserve",
 		"noEmit": true,
 		"alwaysStrict": false,
-		"strict": false,
+		"strict": true,
+
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"importsNotUsedAsValues": "error",
+		"isolatedModules": true,
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitReturns": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"moduleResolution": "node",
-		"esModuleInterop": true,
-		"isolatedModules": true,
-		"forceConsistentCasingInFileNames": true,
+		"preserveValueImports": true,
+
 		"allowJs": true,
 		"skipLibCheck": true,
 		"resolveJsonModule": true,
-		"incremental": true,
+		"incremental": true
 	},
 	"exclude": [
 		".cache",

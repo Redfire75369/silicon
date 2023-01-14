@@ -14,7 +14,7 @@
 </svelte:head>
 
 <Container>
-	<Header>{metadata.title}/Header>
+	<Header>{metadata.title}</Header>
 	<Markdown>
 		<svelte:component this={body}/>
 	</Markdown>
