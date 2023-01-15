@@ -33,7 +33,7 @@ export function getSlugs(): Slug[] {
 	});
 }
 
-export async function getMetadata(slug: Slug): Promise<Metadata> {
+async function getMetadata(slug: Slug): Promise<Metadata> {
 	const content = import.meta.glob<MDSveX>("../content/**/*.svx");
 	if (content[slug.path] !== undefined) {
 		const metadata = (await content[slug.path]()).metadata;
@@ -46,4 +46,11 @@ export async function getMetadata(slug: Slug): Promise<Metadata> {
 		return metadata;
 	}
 	throw error(404, "Metadata Not Found");
+}
+
+export const slugs = getSlugs();
+export const metadata: { [key: string]: Metadata } = {};
+
+for (const slug of slugs) {
+	metadata[slug.slug] = await getMetadata(slug);
 }

@@ -1,5 +1,5 @@
 import {error} from "@sveltejs/kit";
-import {getMetadata, getSlugs} from "$lib/markdown";
+import {metadata} from "$lib/markdown";
 import type {MDSveX} from "$lib/markdown";
 import type {PageLoadEvent} from "./$types";
 
@@ -7,9 +7,7 @@ export const trailingSlash = "always";
 
 /** @type {import("./$types").PageLoad} */
 export async function load({params}: PageLoadEvent) {
-	const slugs = getSlugs();
 	const slug = params.slug;
-	const index = slugs.findIndex(s => s.slug === slug);
 
 	let mdsvex: MDSveX;
 
@@ -28,11 +26,10 @@ export async function load({params}: PageLoadEvent) {
 		throw error(404, "Failed to Parse MDSveX");
 	}
 
-	const metadata = getMetadata(slugs[index]);
 
 	return {
 		slug,
 		body,
-		metadata,
+		metadata: metadata[slug],
 	};
 }
