@@ -22,6 +22,7 @@
 		"rehype-slug-custom-id": "1.1.0",
 		"remark-gfm": "3.0.1",
 		"remark-grid-tables": "2.1.2",
+		"remark-toc": "8.0.1",
 		"sass": "1.57.1",
 		"ssf": "0.11.2"
 	},
