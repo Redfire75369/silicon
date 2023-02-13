@@ -1,5 +1,6 @@
 import adapter from "@sveltejs/adapter-static";
 import {mdsvex} from "mdsvex";
+import relativeImages from "mdsvex-relative-images";
 import remarkGfm from "remark-gfm";
 import remarkGridTables from "remark-grid-tables";
 import remarkToc from "remark-toc";
@@ -10,6 +11,7 @@ import preprocess from "svelte-preprocess";
 /** @type {import("mdsvex").MdsvexOptions} */
 const mdsvexConfig = {
 	remarkPlugins: [
+		relativeImages,
 		remarkGfm,
 		remarkGridTables,
 		[remarkToc, {

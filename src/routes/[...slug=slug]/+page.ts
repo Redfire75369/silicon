@@ -4,8 +4,6 @@ import type {MDSveX} from "$lib/markdown";
 import type {PageLoadEvent} from "./$types";
 import {routes} from "$lib/navigation";
 
-export const trailingSlash = "always";
-
 /** @type {import("./$types").PageLoad} */
 export async function load({params}: PageLoadEvent) {
 	let slug = params.slug;

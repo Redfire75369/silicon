@@ -1072,7 +1072,7 @@ __metadata:
 
 "fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
   version: 2.3.2
-  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=18f3a7"
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"
   dependencies:
     node-gyp: latest
   conditions: os=darwin
@@ -1468,6 +1468,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"just-camel-case@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "just-camel-case@npm:4.0.2"
+  checksum: d2def92e27089fc0fa79594967ff64a02902068aa29bc04f35e3054203104398c1c83542d8b91549e01870915465714b3a68749f56ed4166186887b20ad9d43a
+  languageName: node
+  linkType: hard
+
 "kleur@npm:^4.0.3, kleur@npm:^4.1.5":
   version: 4.1.5
   resolution: "kleur@npm:4.1.5"
@@ -1708,6 +1715,16 @@ __metadata:
     unist-util-is: ^5.0.0
     unist-util-visit: ^3.0.0
   checksum: 795bad4c149b1e96c2ddfcab6ae2da97588c60a2e786c541e1a767e4c54872765e7f54df8abc99925cde5ad2be368e1983b336cebc73c4e29b46a953c54ff06a
+  languageName: node
+  linkType: hard
+
+"mdsvex-relative-images@npm:1.0.3":
+  version: 1.0.3
+  resolution: "mdsvex-relative-images@npm:1.0.3"
+  dependencies:
+    just-camel-case: ^4.0.2
+    unist-util-visit: ^3.1.0
+  checksum: 7f5a95a4c5ae7e7db56e3999c512ff1fe86fc941d78ee1311868e297edc0b1b6f3023d090fc935256ba5a876a240a66c8d988cf24c20aa207487dc73b0f7018a
   languageName: node
   linkType: hard
 
@@ -2634,7 +2651,7 @@ __metadata:
 
 "resolve@patch:resolve@^1.1.6#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>":
   version: 1.22.1
-  resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=07638b"
+  resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=c3c19d"
   dependencies:
     is-core-module: ^2.9.0
     path-parse: ^1.0.7
@@ -2809,6 +2826,7 @@ __metadata:
     drawio-export-puppeteer: 0.2.0
     json5: 2.2.3
     mdsvex: 0.10.6
+    mdsvex-relative-images: 1.0.3
     rehype-autolink-headings: 6.1.1
     rehype-slug-custom-id: 1.1.0
     remark-gfm: 3.0.1
@@ -3150,11 +3168,11 @@ __metadata:
 
 "typescript@patch:typescript@4.9.4#~builtin<compat/typescript>, typescript@patch:typescript@^4.9.4#~builtin<compat/typescript>":
   version: 4.9.4
-  resolution: "typescript@patch:typescript@npm%3A4.9.4#~builtin<compat/typescript>::version=4.9.4&hash=701156"
+  resolution: "typescript@patch:typescript@npm%3A4.9.4#~builtin<compat/typescript>::version=4.9.4&hash=23ec76"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 37f6e2c3c5e2aa5934b85b0fddbf32eeac8b1bacf3a5b51d01946936d03f5377fe86255d4e5a4ae628fd0cd553386355ad362c57f13b4635064400f3e8e05b9d
+  checksum: 3e2ab0772908676d9b9cb83398c70003a3b08e1c6b3b122409df9f4b520f2fdaefa20c3d7d57dce283fed760ac94b3ce94d4a7fa875127b67852904425a1f0dc
   languageName: node
   linkType: hard
 
@@ -3292,7 +3310,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-visit@npm:^3.0.0":
+"unist-util-visit@npm:^3.0.0, unist-util-visit@npm:^3.1.0":
   version: 3.1.0
   resolution: "unist-util-visit@npm:3.1.0"
   dependencies:

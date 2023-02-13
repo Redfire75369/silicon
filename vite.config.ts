@@ -1,8 +1,13 @@
 import {sveltekit} from "@sveltejs/kit/vite";
-import type {UserConfig} from "vite";
+import type {UserConfig} from "vite"; 	
 
 const config: UserConfig = {
-	plugins: [sveltekit()]
+	plugins: [
+		sveltekit(),
+	],
+	build: {
+		target: "firefox102"
+	}
 };
 
 export default config;
