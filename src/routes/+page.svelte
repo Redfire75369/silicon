@@ -7,6 +7,9 @@
 <Container>
 	<Header>Silicon</Header>
 	<Markdown>
-		
+		<ul>
+			<li><a href="earnings/">Earnings</a></li>
+			<li><a href="events/">Events</a></li>
+		</ul>
 	</Markdown>
 </Container>

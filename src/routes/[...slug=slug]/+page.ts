@@ -2,12 +2,20 @@ import {error} from "@sveltejs/kit";
 import {metadata} from "$lib/markdown";
 import type {MDSveX} from "$lib/markdown";
 import type {PageLoadEvent} from "./$types";
+import {routes} from "$lib/navigation";
 
 export const trailingSlash = "always";
 
 /** @type {import("./$types").PageLoad} */
 export async function load({params}: PageLoadEvent) {
-	const slug = params.slug;
+	let slug = params.slug;
+	for (const route of routes) {
+		const matches = route.slugRegex.exec(slug);
+		if (matches !== null) {
+			slug = route.slug(matches);
+			break;
+		}
+	}
 
 	let mdsvex: MDSveX;
 

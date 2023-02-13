@@ -22,18 +22,26 @@
 				value,
 			});
 		} else {
-			let href = `${slugString}/${key}`.replace("//", "/");
+			let href = `${slugString}/${key}`.replaceAll("//", "/");
 
 			for (const route of routes) {
-				const matches = route.regex.exec(href);
+				const matches = route.pathRegex.exec(href);
 				if (matches !== null) {
 					href = route.path(matches);
 					break;
 				}
 			}
+
+			if (href.startsWith("/")) {
+				href = href.substring(1);
+			}
+			if (href.endsWith("/")) {
+				href = href.substring(0, href.length - 1);
+			}
+
 			entries.push({
 				type: "link",
-				href,
+				href: href.replaceAll("//", "/"),
 				index: value.index
 			});
 		}
@@ -51,7 +59,7 @@
 			</li>
 		{:else}
 			<li>
-				<a href={`/${entry.href}`}>{entry.index}</a>
+				<a href={`/${entry.href}/`}>{entry.index}</a>
 			</li>
 		{/if}
 	{/each}

@@ -20,10 +20,14 @@ export const orders = {
 
 export const routes = [
 	{
-		regex: /^\/?earnings\/([\w-]*)\/(\d{4})\/quarter-(\d)\/?$/,
-
+		pathRegex: /^\/?earnings\/([\w-]*)\/(\d{4})\/quarter-(\d)\/?$/,
 		path(matches: RegExpExecArray) {
-			return `/earnings/${matches[1]}/q${matches[3]}-${matches[2]}`;
+			return `/earnings/${matches[1]}/q${matches[3]}-${matches[2]}/`;
+		},
+
+		slugRegex: /^earnings\/([\w-]*)\/q(\d)-(\d{4})\/?$/,
+		slug(matches: RegExpExecArray) {
+			return `earnings/${matches[1]}/${matches[3]}/quarter-${matches[2]}/`;
 		}
 	}
 ];
