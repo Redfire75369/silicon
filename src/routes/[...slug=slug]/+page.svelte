@@ -4,6 +4,7 @@
 	import Markdown from "components/Markdown.svelte";
 	import Navigation from "components/navigation/Navigation.svelte";
 	import {slugs} from "$lib/markdown";
+
 	import type {PageData} from "./$types";
 
 	export let data: PageData;

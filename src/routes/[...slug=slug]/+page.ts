@@ -1,8 +1,9 @@
 import {error} from "@sveltejs/kit";
 import {metadata} from "$lib/markdown";
 import type {MDSveX} from "$lib/markdown";
-import type {PageLoadEvent} from "./$types";
 import {routes} from "$lib/navigation";
+
+import type {PageLoadEvent} from "./$types";
 
 /** @type {import("./$types").PageLoad} */
 export async function load({params}: PageLoadEvent) {
