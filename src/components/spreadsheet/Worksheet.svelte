@@ -1,21 +1,24 @@
 <script lang="ts">
+	import Cell from "components/spreadsheet/Cell.svelte";
 	import excelColour from "$lib/spreadsheet/colour";
 	import {getBorder, getMerges} from "$lib/spreadsheet/styles";
 	import type {CellBorders} from "$lib/spreadsheet/styles";
-	import type {Cell, Worksheet} from "$lib/spreadsheet/types";
+	import type {Cell as CellT, Worksheet} from "$lib/spreadsheet/types";
 
 	export let worksheet: Worksheet;
 
 	let frozen: [number, number] = [0, 0];
-	let view = worksheet.views[0];
-	if (view.state === "frozen") {
-		frozen[0] = (view.xSplit - 1) || 0;
-		frozen[1] = (view.ySplit - 1) || 0;
+	$: {
+		const view = worksheet.views[0];
+		if (view.state === "frozen") {
+			frozen[0] = (view.xSplit - 1) || 0;
+			frozen[1] = (view.ySplit - 1) || 0;
+		}
 	}
 
-	let merges = getMerges(worksheet);
+	$: merges = getMerges(worksheet);
 
-	let colWidths = worksheet.columns.map((column, c) => {
+	$: colWidths = worksheet.columns.map((column, c) => {
 		const maxBorder = worksheet.rows.reduce((acc, row, r) => {
 			const cell = row.cells[c];
 			if (cell?.style?.border) {
@@ -28,7 +31,7 @@
 		return (7.5 * (column?.width ?? worksheet.properties.defaultColWidth ?? 9)) + 2 + maxBorder;
 	});
 
-	let rowHeights = worksheet.rows.map((row, r) => {
+	$: rowHeights = worksheet.rows.map((row, r) => {
 		const maxBorder = row.cells.reduce((acc, cell, c) => {
 			if (cell?.style?.border) {
 				const border = getTrueBorder(cell, r, c);
@@ -40,10 +43,7 @@
 		return (row.height || worksheet.properties.defaultRowHeight) + 2 + maxBorder;
 	});
 
-	let totalHeight = rowHeights.reduce((a, h) => a + h);
-	let totalWidth = colWidths.reduce((a, w) => a + w);
-
-	function getTrueBorder(cell: Cell, row: number, column: number): CellBorders {
+	function getTrueBorder(cell: CellT, row: number, column: number): CellBorders {
 		let [colspan, rowspan] = [1, 1];
 		if (merges[row]?.[column]) {
 			colspan = merges[row][column].colspan;
@@ -115,7 +115,7 @@
 		return trueBorder;
 	}
 
-	function getStyles(cell: Cell, row: number, column: number): string {
+	function getStyles(cell: CellT, row: number, column: number): string {
 		let style = "background-color: #FFFFFF; border-style: solid; border-width: 0; color: #000000; text-align: center; vertical-align: middle;";
 
 		if (cell?.style) {
@@ -171,7 +171,7 @@
 		return style;
 	}
 
-	let rows = worksheet.rows.map((row, r) => {
+	$: rows = worksheet.rows.map((row, r) => {
 		return row.cells.map((cell, c) => {
 			const merge = merges[r]?.[c];
 			const [colspan, rowspan] = [merge?.colspan ?? 1, merge?.rowspan ?? 1];
@@ -190,7 +190,7 @@
 				}
 			}
 
-			return {primary, colspan, rowspan, style, value: cell.value};
+			return {primary, colspan, rowspan, style, cell};
 		});
 	});
 </script>
@@ -230,7 +230,7 @@
 
 <div class="scrollable">
 	<div class="container" style="width: 100vw; height: calc(100vh - 40px);">
-		<table class="table" style="width: {totalWidth}px; height: {totalHeight}px;">
+		<table class="table" style="width: {colWidths.reduce((a, w) => a + w)}px; height: {rowHeights.reduce((a, h) => a + h)}px;">
 			<colgroup>
 				{#each colWidths as width}
 					<col style="width: {width};"/>
@@ -239,14 +239,14 @@
 			<thead>
 				{#each rows.slice(0, frozen[1] + 1) as row}
 					<tr>
-						{#each row as {primary, colspan, rowspan, style, value}}
+						{#each row as {primary, colspan, rowspan, style, cell}}
 							{#if primary}
 								<th scope="col" class="sticky" {style} {colspan} {rowspan}>
-									{value}
+									<Cell {cell}/>
 								</th>
 							{:else}
 								<th scope="col" class="sticky" style="display: none;">
-									{value}
+									<Cell {cell}/>
 								</th>
 							{/if}
 						{/each}
@@ -256,14 +256,14 @@
 			<tbody>
 				{#each rows.slice(frozen[1] + 1, worksheet.rows.length) as row}
 					<tr>
-						{#each row as {primary, colspan, rowspan, style, value}, c}
+						{#each row as {primary, colspan, rowspan, style, cell}, c}
 							{#if primary}
 								<td class={c <= frozen[0] ? "sticky" : ""} {style} {colspan} {rowspan}>
-									{value}
+									<Cell {cell}/>
 								</td>
 							{:else}
 								<td style="display: none;">
-									{value}
+									<Cell {cell}/>
 								</td>
 							{/if}
 						{/each}
