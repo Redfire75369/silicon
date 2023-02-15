@@ -38,5 +38,5 @@ export interface Worksheet {
 	columns: Column[],
 	merges: Record<string, Range>,
 	properties: WorksheetProperties,
-	views: WorksheetView[],
+	views: Partial<WorksheetView>[],
 }

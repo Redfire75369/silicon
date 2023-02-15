@@ -1,6 +1,7 @@
 import ExcelJS from "exceljs";
-import type {Workbook} from "exceljs";
-import {readFile} from "fs/promises";
+import type {CsvWriteOptions, Workbook} from "exceljs";
+import {existsSync} from "fs";
+import {readFile, mkdir} from "fs/promises";
 import JSON5 from "json5";
 import {resolve} from "path";
 
@@ -31,7 +32,7 @@ export const workbooks: Record<string, Workbook> = Object.fromEntries((await Pro
 	return getWorkbook(key);
 }))).map((v, i) => [workbookKeys[i], v]));
 
-export function getWorksheet(workbook: Workbook, metadata: WorksheetMetadata) {
+export async function getWorksheet(workbook_key: string, workbook: Workbook, key: string, metadata: WorksheetMetadata) {
 	const worksheet = workbook.getWorksheet(metadata[0]);
 
 	// @ts-ignore
@@ -92,6 +93,21 @@ export function getWorksheet(workbook: Workbook, metadata: WorksheetMetadata) {
 			right: merge.right,
 		};
 	}
+
+	const options: Partial<CsvWriteOptions> = {
+		includeEmptyRows: true,
+		sheetName: metadata[0],
+	};
+
+	const folder = resolve(contentDir, "spreadsheets", "generated", workbook_key);
+	const csv = resolve(folder, `${key}.csv`);
+
+	console.info(`[CSV]: Writing to ${csv}`);
+	if (!existsSync(folder)) {
+		await mkdir(folder, {recursive: true});
+	}
+
+	await workbook.csv.writeFile(csv, options);
 
 	return {
 		name: worksheet.name,
