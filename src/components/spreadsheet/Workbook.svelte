@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Worksheet from "components/spreadsheet/Worksheet.svelte";
 	import type {Worksheet as WorksheetT} from "$lib/spreadsheet/types";
 
 	export let keys: string[];
@@ -6,12 +7,13 @@
 	export let worksheets: WorksheetT[];
 
 	let currentIndex = 0;
+	$: worksheet = worksheets[currentIndex];
 
-	function switchIndex(index: number): () => void {
+	const callbacks = keys.map((_, index) => {
 		return () => {
 			currentIndex = index;
 		};
-	}
+	});
 </script>
 
 <style lang="scss">
@@ -64,7 +66,7 @@
 				color: $hover-font;
 			}
 		}
-		
+
 		&.link {
 			background: $inactive-bg;
 			text-decoration: none;
@@ -77,20 +79,20 @@
 </style>
 
 <div class="workbook">
-	<!--<Worksheet worksheet={worksheets[currentIndex]}/>-->
+	<Worksheet {worksheet}/>
 
 	<div class="navigation">
 		<a class="tab link" href="../">
 			Browse Spreadsheets
 		</a>
 
-		{#each keys as key, index}
+		{#each keys as key, index (key)}
 			{#if index === currentIndex}
 				<div class="tab active">
 					{names[index]}
 				</div>
 			{:else}
-				<div class="tab inactive" on:click={switchIndex(index)}>
+				<div class="tab inactive" on:click={callbacks[index]}>
 					{names[index]}
 				</div>
 			{/if}

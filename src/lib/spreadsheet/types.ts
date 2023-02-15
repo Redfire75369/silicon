@@ -7,7 +7,7 @@ export interface Range {
 	right: number,
 }
 
-export type Merge = {
+export interface Merge {
 	primary: boolean,
 	colspan: number,
 	rowspan: number,
@@ -36,9 +36,7 @@ export interface Worksheet {
 	state: string,
 	rows: Row[],
 	columns: Column[],
-	merges: {
-		[cell: string]: Range
-	},
+	merges: Record<string, Range>,
 	properties: WorksheetProperties,
-	views: Partial<WorksheetView>[],
+	views: WorksheetView[],
 }

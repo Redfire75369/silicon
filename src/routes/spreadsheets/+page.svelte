@@ -5,12 +5,11 @@
 </script>
 
 <Container>
-	<Header>Silicon</Header>
+	<Header>Spreadsheets</Header>
 	<Markdown>
 		<ul>
-			<li><a href="earnings/">Earnings</a></li>
-			<li><a href="events/">Events</a></li>
-			<li><a href="spreadsheets/">Spreadsheets</a></li>
+			<li><a href="cpus/">Central Processing Units (CPUs)</a></li>
+			<li><a href="gpus/">Graphics Processing Units (GPUs)</a></li>
 		</ul>
 	</Markdown>
 </Container>

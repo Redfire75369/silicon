@@ -1,11 +1,11 @@
-import {Workbook} from "exceljs";
+import ExcelJS from "exceljs";
+import type {Workbook} from "exceljs";
 import {readFile} from "fs/promises";
-import {parse} from "json5";
+import JSON5 from "json5";
 import {resolve} from "path";
 
-import {contentDir} from "$lib/directory";
+import {contentDir} from "$lib/directory.server";
 import type {Cell, Column, Range, Row} from "$lib/spreadsheet/types";
-
 
 export type WorksheetMetadata = [name: string, width: number, height: number];
 
@@ -15,12 +15,13 @@ export type WorkbookMetadata = {
 	path: string,
 };
 
-export const metadata: Record<string, WorkbookMetadata> = parse(
+
+export const metadata: Record<string, WorkbookMetadata> = JSON5.parse(
 	await readFile(resolve(contentDir, "spreadsheets", "metadata.json5"), {encoding: "utf8"})
 );
 
 async function getWorkbook(key: string): Promise<Workbook> {
-	const workbook = new Workbook();
+	const workbook = new ExcelJS.Workbook();
 	return await workbook.xlsx.readFile(resolve(contentDir, "spreadsheets", `${key}.xlsx`));
 }
 

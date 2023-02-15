@@ -8,4 +8,12 @@
 	const {keys, names, worksheets} = data;
 </script>
 
+<style lang="scss">
+	:global {
+		body {
+			margin: 0;
+		}
+	}
+</style>
+
 <Workbook {keys} {names} {worksheets}/>
