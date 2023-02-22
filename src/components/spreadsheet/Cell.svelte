@@ -9,7 +9,7 @@
 </script>
 
 {#if hyperlink}
-	<a target="_blank" href={hyperlink}>{text}</a>
+	<a target="_blank" rel="noreferrer" href={hyperlink}>{text}</a>
 {:else }
 	<div>{text}</div>
 {/if}

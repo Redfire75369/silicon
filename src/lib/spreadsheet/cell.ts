@@ -1,4 +1,4 @@
-import {format} from "ssf";
+import SSF from "ssf";
 
 import type {Cell} from "$lib/spreadsheet/types";
 
@@ -21,7 +21,7 @@ export function cellToString(cell: Cell): string {
 				fmt = condition + "]" + remaining.replaceAll("[", "\\[").replaceAll("]", "\\]");
 			}
 
-			return format(fmt, cell.value);
+			return SSF.format(fmt, cell.value);
 		} else if (typeof cell.value === "object" && "hyperlink" in cell.value && typeof cell.value?.hyperlink === "string") {
 			return cell.value.text;
 		} else {

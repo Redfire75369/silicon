@@ -10,6 +10,7 @@
 		<ul>
 			<li><a href="earnings/">Earnings</a></li>
 			<li><a href="events/">Events</a></li>
+			<li><a href="diagrams/">Diagrams</a></li>
 			<li><a href="spreadsheets/">Spreadsheets</a></li>
 		</ul>
 	</Markdown>

@@ -29,6 +29,7 @@
 		"ssf": "0.11.2"
 	},
 	"devDependencies": {
+		"@poppanator/sveltekit-svg": "2.1.2",
 		"@sveltejs/adapter-static": "1.0.1",
 		"@sveltejs/kit": "1.0.12",
 		"@types/node": "18.11.18",
@@ -37,6 +38,7 @@
 		"svelte-preprocess": "5.0.0",
 		"tslib": "2.4.1",
 		"typescript": "4.9.4",
-		"vite": "4.0.4"
+		"vite": "4.0.4",
+		"vite-plugin-json5": "1.0.5"
 	}
 }

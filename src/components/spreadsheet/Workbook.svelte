@@ -92,9 +92,9 @@
 					{names[index]}
 				</div>
 			{:else}
-				<div class="tab inactive" on:click={callbacks[index]}>
+				<button class="tab inactive" on:click={callbacks[index]}>
 					{names[index]}
-				</div>
+				</button>
 			{/if}
 		{/each}
 	</div>

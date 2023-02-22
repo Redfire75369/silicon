@@ -10,6 +10,7 @@
 		<ul>
 			<li><a href="cpus/">Central Processing Units (CPUs)</a></li>
 			<li><a href="gpus/">Graphics Processing Units (GPUs)</a></li>
+			<li><a href="capital-expenditure/">Semiconductor Capital Expenditure (CapEx)</a></li>
 		</ul>
 	</Markdown>
 </Container>
