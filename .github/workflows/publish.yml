@@ -50,7 +50,9 @@ jobs:
       - name: Install Dependencies
         run: yarn install --immutable
 
-      - name: Build with Gatsby
+      - name: Build with Vite
+        env:
+          ROOT_DIRECTORY: /home/runner/work/silicon/silicon/
         run: yarn build
 
       - name: Upload Artifact

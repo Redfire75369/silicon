@@ -48,13 +48,15 @@ jobs:
           path: |
             public
             .cache
-          key: ${{ runner.os }}-gatsby-build-${{ hashFiles('build') }}
-          restore-keys: ${{ runner.os }}-gatsby-build-
+          key: ${{ runner.os }}-vite-build-${{ hashFiles('build') }}
+          restore-keys: ${{ runner.os }}-vite-build-
 
       - name: Install Dependencies
         run: yarn install --immutable
 
-      - name: Build with Gatsby
+      - name: Build with Vite
+        env:
+          ROOT_DIRECTORY: /home/runner/work/silicon/silicon/
         run: yarn build
 
       - name: Upload Artifact
