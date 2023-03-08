@@ -59,7 +59,7 @@
 			</li>
 		{:else}
 			<li>
-				<a href={`/${entry.href}/`}>{entry.index}</a>
+				<a data-sveltekit-reload href={`/${entry.href}/`}>{entry.index}</a>
 			</li>
 		{/if}
 	{/each}
