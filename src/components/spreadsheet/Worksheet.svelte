@@ -7,14 +7,8 @@
 
 	export let worksheet: Worksheet;
 
-	let frozen: [number, number] = [0, 0];
-	$: {
-		const view = worksheet.views[0];
-		if (view.state === "frozen") {
-			frozen[0] = (view.xSplit - 1) || 0;
-			frozen[1] = (view.ySplit - 1) || 0;
-		}
-	}
+	$: frozenX = (worksheet.views?.[0]?.xSplit ?? 0) - 1;
+	$: frozenY = (worksheet.views?.[0]?.ySplit ?? 0) - 1;
 
 	$: merges = getMerges(worksheet);
 
@@ -176,21 +170,22 @@
 			const merge = merges[r]?.[c];
 			const [colspan, rowspan] = [merge?.colspan ?? 1, merge?.rowspan ?? 1];
 			const primary = merge?.primary ?? true;
+			const sticky = (r <= frozenY || c <= frozenX) ? "sticky" : "";
 
 			let style = getStyles(cell, r, c);
 			style += `width: ${colWidths[c]}px;`;
 			style += `height: ${rowHeights[r]}px;`;
-			if (r <= frozen[1]) {
+			if (r <= frozenY) {
 				style += `top: ${rowHeights.slice(0, r).reduce((a, r) => a + r, 0)}px;`;
 			}
-			if (c <= frozen[0]) {
+			if (c <= frozenX) {
 				style += `left: ${colWidths.slice(0, c).reduce((a, c) => a + c, 0)}px;`
-				if (r <= frozen[1]) {
+				if (r <= frozenY) {
 					style += "z-index: 1;";
 				}
 			}
 
-			return {primary, colspan, rowspan, style, cell};
+			return {primary, colspan, rowspan, style, sticky, cell};
 		});
 	});
 </script>
@@ -237,15 +232,15 @@
 				{/each}
 			</colgroup>
 			<thead>
-				{#each rows.slice(0, frozen[1] + 1) as row}
+				{#each rows.slice(0, frozenY + 1) as row}
 					<tr>
-						{#each row as {primary, colspan, rowspan, style, cell}}
+						{#each row as {primary, colspan, rowspan, style, sticky, cell}}
 							{#if primary}
-								<th scope="col" class="sticky" {style} {colspan} {rowspan}>
+								<th scope="col" class={sticky} {style} {colspan} {rowspan}>
 									<Cell {cell}/>
 								</th>
 							{:else}
-								<th scope="col" class="sticky" style="display: none;">
+								<th scope="col" style="display: none;">
 									<Cell {cell}/>
 								</th>
 							{/if}
@@ -254,11 +249,11 @@
 				{/each}
 			</thead>
 			<tbody>
-				{#each rows.slice(frozen[1] + 1, worksheet.rows.length) as row}
+				{#each rows.slice(frozenY + 1, worksheet.rows.length) as row}
 					<tr>
-						{#each row as {primary, colspan, rowspan, style, cell}, c}
+						{#each row as {primary, colspan, rowspan, style, sticky, cell}, c}
 							{#if primary}
-								<td class={c <= frozen[0] ? "sticky" : ""} {style} {colspan} {rowspan}>
+								<td class={sticky} {style} {colspan} {rowspan}>
 									<Cell {cell}/>
 								</td>
 							{:else}

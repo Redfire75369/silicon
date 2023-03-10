@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Workbook from "components/spreadsheet/Workbook.svelte";
+	import "./global.scss";
 
 	import type {PageData} from "./$types";
 
@@ -8,12 +9,5 @@
 	const {keys, names, worksheets} = data;
 </script>
 
-<style lang="scss">
-	:global {
-		body {
-			margin: 0;
-		}
-	}
-</style>
 
 <Workbook {keys} {names} {worksheets}/>
