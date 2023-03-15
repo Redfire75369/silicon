@@ -294,9 +294,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/kit@npm:1.10.0":
-  version: 1.10.0
-  resolution: "@sveltejs/kit@npm:1.10.0"
+"@sveltejs/kit@npm:1.11.0":
+  version: 1.11.0
+  resolution: "@sveltejs/kit@npm:1.11.0"
   dependencies:
     "@sveltejs/vite-plugin-svelte": ^2.0.0
     "@types/cookie": ^0.5.1
@@ -316,7 +316,7 @@ __metadata:
     vite: ^4.0.0
   bin:
     svelte-kit: svelte-kit.js
-  checksum: 3de18657155886247ca16a3c0e61355ac9811c3e97e82d64e6b813f2af41db10cad4b7708c2ffe1e39ef9c5dee807655a8362a8a9dc11ca4762211a9d11d9acb
+  checksum: 8fa66b8028e2ae9390d9d4ed2f51a3da2e5dee2a21dbcf928e38a6cf4cd5359c4e4449bee8927dabcb7786cb740a75789dd91eab041a5ac8f9e3e4a50ca52589
   languageName: node
   linkType: hard
 
@@ -413,10 +413,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.14.6":
-  version: 18.14.6
-  resolution: "@types/node@npm:18.14.6"
-  checksum: 2f88f482cabadc6dbddd627a1674239e68c3c9beab56eb4ae2309fb96fd17fc3a509d99b0309bafe13b58529574f49ecf3a583f2ebe2896dd32fe4be436dc96e
+"@types/node@npm:18.15.3":
+  version: 18.15.3
+  resolution: "@types/node@npm:18.15.3"
+  checksum: 31b1d92475a82c30de29aa6c0771b18a276552d191283b4423ba2d61b3f01159bf0d02576c0b7cc834b043997893800db6bb47f246083ed85aa45e79c80875d7
   languageName: node
   linkType: hard
 
@@ -3317,16 +3317,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.58.3":
-  version: 1.58.3
-  resolution: "sass@npm:1.58.3"
+"sass@npm:1.59.3":
+  version: 1.59.3
+  resolution: "sass@npm:1.59.3"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 35a2b98c037ef80fdc93c9b0be846e6ccc7d75596351a37ee79c397e66666d0a754c52c4696e746c0aff32327471e185343ca349e998a58340411adc9d0489a5
+  checksum: 839b5282cdf7d0ba3fdbfb605277dd584a8c40fa3e3e58ad905d64cd812acfb82ff0a4072d4981673db884ee61505472ff07c5c5a8a497f16ba013b183ba6473
   languageName: node
   linkType: hard
 
@@ -3397,8 +3397,8 @@ __metadata:
   dependencies:
     "@poppanator/sveltekit-svg": 2.1.2
     "@sveltejs/adapter-static": 2.0.1
-    "@sveltejs/kit": 1.10.0
-    "@types/node": 18.14.6
+    "@sveltejs/kit": 1.11.0
+    "@types/node": 18.15.3
     colord: 2.9.3
     csstype: 3.1.1
     drawio-export-puppeteer: 0.2.0
@@ -3411,11 +3411,11 @@ __metadata:
     remark-gfm: 3.0.1
     remark-grid-tables: 2.1.2
     remark-toc: 8.0.1
-    sass: 1.58.3
+    sass: 1.59.3
     ssf: 0.11.2
-    svelte: 3.55.1
-    svelte-check: 3.1.0
-    svelte-preprocess: 5.0.1
+    svelte: 3.56.0
+    svelte-check: 3.1.4
+    svelte-preprocess: 5.0.2
     tslib: 2.5.0
     typescript: 4.9.5
     vite: 4.1.4
@@ -3597,9 +3597,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-check@npm:3.1.0":
-  version: 3.1.0
-  resolution: "svelte-check@npm:3.1.0"
+"svelte-check@npm:3.1.4":
+  version: 3.1.4
+  resolution: "svelte-check@npm:3.1.4"
   dependencies:
     "@jridgewell/trace-mapping": ^0.3.17
     chokidar: ^3.4.1
@@ -3613,7 +3613,7 @@ __metadata:
     svelte: ^3.55.0
   bin:
     svelte-check: bin/svelte-check
-  checksum: 311907ae6a280df7a9fc6905bb7aaffebd437d1ef0d13cd854e7be48fed74e171512ab9e0165b0d71b24188846ecbe438f46fc89311b8972b6e87143e437a2a3
+  checksum: b029642a31110edc6d7caa47dbc53102396c171db99a5121288bdf2b4b33539dc430e05b505c7d77ad25a19a5a5560cae0e86227eca07d5f2a6ab5ee452e987a
   languageName: node
   linkType: hard
 
@@ -3626,12 +3626,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-preprocess@npm:5.0.1":
-  version: 5.0.1
-  resolution: "svelte-preprocess@npm:5.0.1"
+"svelte-preprocess@npm:5.0.2":
+  version: 5.0.2
+  resolution: "svelte-preprocess@npm:5.0.2"
   dependencies:
     "@types/pug": ^2.0.6
-    "@types/sass": ^1.43.1
     detect-indent: ^6.1.0
     magic-string: ^0.27.0
     sorcery: ^0.11.0
@@ -3647,7 +3646,7 @@ __metadata:
     stylus: ^0.55.0
     sugarss: ^2.0.0 || ^3.0.0 || ^4.0.0
     svelte: ^3.23.0
-    typescript: ^3.9.5 || ^4.0.0
+    typescript: ">=3.9.5 || ^4.0.0 || ^5.0.0"
   peerDependenciesMeta:
     "@babel/core":
       optional: true
@@ -3669,7 +3668,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 80b317b25657a53d0343472560d13a3feb1b0e23cd15278cf491c802f027fca9313b17a652ce7a106263ce5e679bb0c3599daf4e7b9ab66fb794554ed6228d7d
+  checksum: 56a756341d3c749147934a705225c0086baf4b8b3424b3004ff73bd4556b06bddd81245f1cabeea55af1a59772bb1640ace4442f3f9cd634a3f92c271c1990b0
   languageName: node
   linkType: hard
 
@@ -3720,10 +3719,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte@npm:3.55.1":
-  version: 3.55.1
-  resolution: "svelte@npm:3.55.1"
-  checksum: ce66391bae68b2055a0a63ee0477e73f036247d4dd5abd5240372d5f4971a452ad29c4ef2c630ab089697429edd61756ef7b764e7597ad7e897ce9f8a9457fec
+"svelte@npm:3.56.0":
+  version: 3.56.0
+  resolution: "svelte@npm:3.56.0"
+  checksum: d691364416632265dd0bbba23021f5766c5c4f905389978dc73c9c1261141479a7aed9f0bce5e0bde87d7f566e89f18476d95d2299bcac57f165dc7dab3a6095
   languageName: node
   linkType: hard
 
