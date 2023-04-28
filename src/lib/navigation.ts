@@ -11,11 +11,13 @@ export const navigation = {
 	"events/intel/": "Intel",
 	"events/hot-chips/": "Hot Chips",
 	"events/hot-chips/33/google/": "Google",
+	"events/vlsi/": "Symposium on VLSI Technology and Circuits",
+	"events/vlsi/2023/": "VLSI Symposium 2023",
 };
 
 export const orders = {
 	"/": ["diagrams", "earnings", "events", "spreadsheets"],
-	"/events/": ["hot-chips", "amd", "intel"],
+	"/events/": ["hot-chips", "vlsi", "amd", "intel"],
 };
 
 export const routes = [

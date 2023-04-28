@@ -17,7 +17,7 @@
 			const innerSlug = navigationSlugs.find(slug => href === slugString);
 			entries.push({
 				type: "nested",
-				navigation: metadata[href]?.navigation ?? navigation[href] ?? `Unknown: ${innerSlug} ${key}`,
+				navigation: metadata[href]?.navigation ?? navigation[href] ?? `Unknown: ${href} ${key}`,
 				href,
 				value,
 			});
@@ -55,7 +55,7 @@
 		{:else if entry.type === "nested"}
 			<li>
 				{entry.navigation}
-				<svelte:self slugString={entry.href} slugs={navigationSlugs} map={entry.value}/>
+				<svelte:self slugString={entry.href} navigationSlugs={navigationSlugs} map={entry.value}/>
 			</li>
 		{:else}
 			<li>
