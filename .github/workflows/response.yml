@@ -1,7 +1,10 @@
 name: Remote Dispatch Responder
+run-name: "Content: ${{ github.event.client_payload.commit_message }}"
 
 on:
   repository_dispatch:
+    types:
+      - dispatch-publish
 
 permissions:
   contents: read
@@ -20,17 +23,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Event Information
-        run: echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
-
-      - name: Check Event
-        if: github.event.action != 'dispatch_initiate'
-        run: exit 1
-
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          token: "${{ secrets.ACCESS_TOKEN }}"
+          token: "${{ github.event.client_payload.token }}"
           submodules: "recursive"
 
       - name: Update Submodules
