@@ -1,6 +1,7 @@
-import msal, {InteractionRequiredAuthError} from "@azure/msal-node";
+import {InteractionRequiredAuthError, PublicClientApplication} from "@azure/msal-node";
 import {Client, CustomAuthenticationProvider, ResponseType} from "@microsoft/microsoft-graph-client";
 import dotenv from "dotenv";
+import {existsSync} from "fs";
 import {open, writeFile} from "fs/promises";
 import openBrowser from "open";
 import {resolve} from "path";
@@ -29,8 +30,11 @@ async function getAccessToken() {
 	};
 	const scopes = ["User.Read", "Files.Read", "offline_access"];
 
-	const pca = new msal.PublicClientApplication(pcaOptions);
+	const pca = new PublicClientApplication(pcaOptions);
 
+	if (!existsSync(cachePath)) {
+		await writeFile(cachePath, "");
+	}
 	const cacheFile = await open(cachePath, "r+");
 
 	const cache = pca.getTokenCache();
