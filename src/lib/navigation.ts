@@ -27,8 +27,10 @@ export const orders: Record<string, string[]> = {
 
 export interface Route {
 	pathRegex: RegExp,
-	path(matches: RegExpExecArray): string,
 	slugRegex: RegExp,
+
+	path(matches: RegExpExecArray): string,
+
 	slug(matches: RegExpExecArray): string,
 }
 

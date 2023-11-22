@@ -1,5 +1,5 @@
-import {colord} from "colord";
 import type {Colord, HslaColor} from "colord";
+import {colord} from "colord";
 
 const indexedColours = [
 	"#000000",

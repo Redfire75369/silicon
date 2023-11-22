@@ -1,13 +1,13 @@
 import type {CsvWriteOptions, Workbook} from "exceljs";
+import ExcelJS from "exceljs";
 import {resolve} from "path";
 import {existsSync} from "fs";
 import {mkdir} from "fs/promises";
 
 import {contentDir} from "$lib/directory.server";
-import {metadata} from "$lib/spreadsheet/workbook";
 import type {WorksheetMetadata} from "$lib/spreadsheet/workbook";
+import {metadata} from "$lib/spreadsheet/workbook";
 import type {Cell, Column, Range, Row} from "$lib/spreadsheet/types";
-import ExcelJS from "exceljs";
 
 async function getWorkbook(key: string): Promise<Workbook> {
 	const workbook = new ExcelJS.Workbook();
@@ -67,7 +67,7 @@ export async function getWorksheet(workbook_key: string, workbook: Workbook, key
 	const columns: Column[] = Array.from(worksheet.columns.slice(0, metadata[1]), (column, index) => {
 		return {
 			number: index + 1,
-			width: column?.width || worksheet.properties.defaultColWidth || 9,
+			width: column?.width ?? worksheet.properties.defaultColWidth ?? 9,
 			style: {...column?.style},
 		}
 	});

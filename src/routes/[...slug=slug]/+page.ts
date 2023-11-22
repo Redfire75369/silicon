@@ -1,6 +1,6 @@
 import {error} from "@sveltejs/kit";
-import {metadata} from "$lib/markdown";
 import type {MDSveX} from "$lib/markdown";
+import {metadata} from "$lib/markdown";
 import {routes} from "$lib/navigation";
 
 import type {PageLoadEvent} from "./$types";

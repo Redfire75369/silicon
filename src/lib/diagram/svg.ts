@@ -4,8 +4,8 @@ import {existsSync} from "fs";
 import {mkdir, readFile, stat, writeFile} from "fs/promises";
 import {resolve} from "path";
 
-import {metadata} from "$lib/diagram/diagram";
 import type {Variant} from "$lib/diagram/diagram";
+import {metadata} from "$lib/diagram/diagram";
 import {cacheDir, contentDir} from "$lib/directory.server";
 
 type Saves = Record<string, {

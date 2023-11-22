@@ -29,9 +29,6 @@
 		"resolveJsonModule": true,
 		"incremental": true
   },
-  "include": [
-    "src/types/*.d.ts"
-  ],
   "exclude": [
 		".cache",
 		"node_modules"

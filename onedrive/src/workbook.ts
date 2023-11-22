@@ -1,6 +1,6 @@
 import JSON5 from "json5";
 import {readFile} from "fs/promises";
-import {resolve, dirname} from "path";
+import {dirname, resolve} from "path";
 import {fileURLToPath} from "url";
 
 import type {WorkbookMetadata} from "../../src/lib/spreadsheet/workbook";
