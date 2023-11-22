@@ -7,8 +7,9 @@
 
 	export let worksheet: Worksheet;
 
-	$: frozenX = (worksheet.views?.[0]?.xSplit ?? 0) - 1;
-	$: frozenY = (worksheet.views?.[0]?.ySplit ?? 0) - 1;
+	$: view = worksheet.views?.[0];
+	$: frozenX = view.state === "frozen" ? view.xSplit ?? 0 : 0;
+	$: frozenY = view.state === "frozen" ? view.ySplit ?? 0 : 0;
 
 	$: merges = getMerges(worksheet);
 
@@ -170,17 +171,17 @@
 			const merge = merges[r]?.[c];
 			const [colspan, rowspan] = [merge?.colspan ?? 1, merge?.rowspan ?? 1];
 			const primary = merge?.primary ?? true;
-			const sticky = (r <= frozenY || c <= frozenX) ? "sticky" : "";
+			const sticky = (r < frozenY || c < frozenX) ? "sticky" : "";
 
 			let style = getStyles(cell, r, c);
 			style += `width: ${colWidths[c]}px;`;
 			style += `height: ${rowHeights[r]}px;`;
-			if (r <= frozenY) {
+			if (r < frozenY) {
 				style += `top: ${rowHeights.slice(0, r).reduce((a, r) => a + r, 0)}px;`;
 			}
-			if (c <= frozenX) {
+			if (c < frozenX) {
 				style += `left: ${colWidths.slice(0, c).reduce((a, c) => a + c, 0)}px;`
-				if (r <= frozenY) {
+				if (r < frozenY) {
 					style += "z-index: 1;";
 				}
 			}
@@ -232,7 +233,7 @@
 				{/each}
 			</colgroup>
 			<thead>
-				{#each rows.slice(0, frozenY + 1) as row}
+				{#each rows.slice(0, frozenY) as row}
 					<tr>
 						{#each row as {primary, colspan, rowspan, style, sticky, cell}}
 							{#if primary}
@@ -249,9 +250,9 @@
 				{/each}
 			</thead>
 			<tbody>
-				{#each rows.slice(frozenY + 1, worksheet.rows.length) as row}
+				{#each rows.slice(frozenY, worksheet.rows.length) as row}
 					<tr>
-						{#each row as {primary, colspan, rowspan, style, sticky, cell}, c}
+						{#each row as {primary, colspan, rowspan, style, sticky, cell}}
 							{#if primary}
 								<td class={sticky} {style} {colspan} {rowspan}>
 									<Cell {cell}/>

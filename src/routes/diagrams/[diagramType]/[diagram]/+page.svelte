@@ -1,6 +1,4 @@
 <script lang="ts">
-	import {onMount} from "svelte";
-
 	import Container from "components/Container.svelte";
 	import Header from "components/Header.svelte";
 	import type {PageData} from "./$types";

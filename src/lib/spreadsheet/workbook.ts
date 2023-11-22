@@ -11,5 +11,3 @@ export type WorkbookMetadata = {
 
 export const metadata: Record<string, WorkbookMetadata> = meta;
 
-export const workbookKeys = Object.keys(metadata);
-

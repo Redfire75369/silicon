@@ -1,13 +1,13 @@
 import {error} from "@sveltejs/kit";
 
-import {metadata, workbookKeys} from "$lib/spreadsheet/workbook";
+import {metadata} from "$lib/spreadsheet/workbook";
 import type {Worksheet} from "$lib/spreadsheet/types";
 import {getWorksheet, workbooks} from "$lib/spreadsheet/workbook.server";
 import type {PageServerLoadEvent} from "./$types";
 
 /** @type {import("./$types").PageServerLoad} */
 export async function load({params}: PageServerLoadEvent) {
-	if (!workbookKeys.includes(params.workbook)) {
+	if (!(params.workbook in workbooks)) {
 		throw error(404, "Invalid Spreadsheet");
 	}
 	const workbook = workbooks[params.workbook];

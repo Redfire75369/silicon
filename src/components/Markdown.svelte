@@ -10,7 +10,7 @@
 			color: #D1D5DB;
 			line-height: 1.625;
 
-			strong, em, del {}
+			// strong, em, del {}
 
 			h1, h2, h3, h4, h5, h6 {
 				color: #E5E7EB;
@@ -36,7 +36,7 @@
 				font-size: 1.25rem;
 			}
 
-			h6	{}
+			// h6 {}
 
 			p, blockquote {
 				margin: 0 1.5rem;
@@ -78,15 +78,15 @@
 				}
 			}
 
-			p {}
-			blockquote {}
-			code {}
-			hr {}
-			img {}
-			table, thead, tbody {}
+			// p {}
+			// blockquote {}
+			// code {}
+			// hr {}
+			// img {}
+			// table, thead, tbody {}
 
-			dl, dt, dd {}
-			input[type=checkbox] {}
+			// dl, dt, dd {}
+			// input[type=checkbox] {}
 		}
 	}
 </style>

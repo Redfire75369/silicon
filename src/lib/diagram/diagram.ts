@@ -1,9 +1,19 @@
 // @ts-ignore
 import meta from "content/diagrams/metadata.json5";
 
-export interface DiagramMetadata {
-	type: string,
-	variants: Variants,
+interface Meshes {
+	name: string,
+	codename: string,
+	start: number,
+	dies: string[],
+	dieNames: string[]
 }
 
-export const metadata: Record<string, DiagramMetadata> = meta;
+export type Variant = Meshes;
+
+interface Diagram {
+	type: string,
+	variants: Record<string, Variant>,
+}
+
+export const metadata: Record<string, Diagram> = meta;

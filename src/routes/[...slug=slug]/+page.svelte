@@ -3,7 +3,6 @@
 	import Header from "components/Header.svelte";
 	import Markdown from "components/Markdown.svelte";
 	import Navigation from "components/navigation/Navigation.svelte";
-	import {slugs} from "$lib/markdown";
 
 	import type {PageData} from "./$types";
 
@@ -11,9 +10,6 @@
 
 	const {slug, body, metadata} = data;
 	const url = `https://silicon.redfire.dev/${slug}/`;
-	const navigationSlugs = slugs.filter(s => {
-		return s.slug.startsWith(slug) && s.slug !== slug && s.slug.includes("/mlid") === slug.includes("/mlid");
-	});
 </script>
 
 <svelte:head>
@@ -51,7 +47,7 @@
 	<Markdown>
 		<svelte:component this={body}/>
 		{#if metadata.index}
-			<Navigation currentSlug={slug} navigationSlugs={navigationSlugs}/>
+			<Navigation current={slug}/>
 		{/if}
 	</Markdown>
 </Container>

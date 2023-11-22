@@ -7,20 +7,27 @@ import {contentDir} from "$lib/directory.server";
 import type {WorksheetMetadata} from "$lib/spreadsheet/workbook";
 import type {Cell, Column, Range, Row} from "$lib/spreadsheet/types";
 import ExcelJS from "exceljs";
-import {workbookKeys} from "$lib/spreadsheet/workbook";
+import workbook from "onedrive/workbook";
 
 async function getWorkbook(key: string): Promise<Workbook> {
 	const workbook = new ExcelJS.Workbook();
 	return await workbook.xlsx.readFile(resolve(contentDir, "spreadsheets", `${key}.xlsx`));
 }
 
-export const workbooks: Record<string, Workbook> = Object.fromEntries((await Promise.all(workbookKeys.map(key => {
-	return getWorkbook(key);
-}))).map((v, i) => [workbookKeys[i], v]));
+export const workbooks: Record<string, Workbook> = Object.fromEntries(
+	await Promise.all(Object.keys(workbook).map(async key => {
+		const workbook = await getWorkbook(key);
+		return [key, workbook];
+	}))
+);
 
 
 export async function getWorksheet(workbook_key: string, workbook: Workbook, key: string, metadata: WorksheetMetadata) {
 	const worksheet = workbook.getWorksheet(metadata[0]);
+
+	if (worksheet === undefined) {
+		throw new Error(`Worksheet ${metadata[0]} not found in workbook`);
+	}
 
 	// @ts-ignore
 	const rows: Row[] = Array.from(worksheet._rows.slice(0, metadata[2]), (row: Row | undefined, r) => {
@@ -69,11 +76,10 @@ export async function getWorksheet(workbook_key: string, workbook: Workbook, key
 	const merges: Record<string, Range> = {};
 
 	// @ts-ignore
-	let keys = Object.keys(worksheet._merges);
-	for (let i = 0; i < keys.length; i++) {
+	for (const key in worksheet._merges) {
 		// @ts-ignore
-		let merge: Range = worksheet._merges[keys[i]].model;
-		merges[keys[i]] = {
+		let merge: Range = worksheet._merges[key].model;
+		merges[key] = {
 			top: merge.top,
 			left: merge.left,
 			bottom: merge.bottom,
