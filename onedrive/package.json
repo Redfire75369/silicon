@@ -4,20 +4,21 @@
   "private": true,
   "type": "module",
   "author": "Redfire",
-  "packageManager": "yarn@3.2.4",
+  "packageManager": "yarn@4.0.2",
   "scripts": {
-    "onedrive:sync": "ts-node-esm index.ts"
+    "onedrive:sync": "ts-node-esm src/index.ts"
   },
   "dependencies": {
-    "@azure/msal-node": "2.4.0",
+    "@azure/msal-node": "2.5.1",
     "@microsoft/microsoft-graph-client": "3.0.7",
     "dotenv": "16.3.1",
+    "json5": "2.2.3",
     "open": "9.1.0"
   },
   "devDependencies": {
-    "@types/microsoft-graph": "2.38.1",
-    "@types/node": "20.8.10",
+    "@types/microsoft-graph": "2.38.3",
+    "@types/node": "20.9.4",
     "ts-node": "10.9.1",
-    "typescript": "5.2.2"
+    "typescript": "5.3.2"
   }
 }

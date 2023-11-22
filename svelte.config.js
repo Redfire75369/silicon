@@ -38,8 +38,8 @@ const config = {
 		alias: {
 			"components": "src/components",
 			"content": "src/content",
-		}
-	}
+		},
+	},
 };
 
 export default config;

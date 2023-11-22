@@ -12,7 +12,7 @@
 
 		"jsx": "preserve",
 		"noEmit": true,
-		"alwaysStrict": false,
+		"alwaysStrict": true,
 		"strict": true,
 
 		"esModuleInterop": true,
@@ -25,12 +25,14 @@
 		"noUnusedParameters": true,
 		"preserveValueImports": true,
 
-		"allowJs": true,
 		"skipLibCheck": true,
 		"resolveJsonModule": true,
 		"incremental": true
-	},
-	"exclude": [
+  },
+  "include": [
+    "src/types/*.d.ts"
+  ],
+  "exclude": [
 		".cache",
 		"node_modules"
 	]

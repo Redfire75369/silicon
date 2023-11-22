@@ -1,4 +1,4 @@
-name: Publish Gatsby Site
+name: Publish SvelteKit Site
 
 on:
   push:

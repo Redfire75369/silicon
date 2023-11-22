@@ -1,4 +1,3 @@
-// @ts-ignore
 import meta from "content/diagrams/metadata.json5";
 
 interface Meshes {

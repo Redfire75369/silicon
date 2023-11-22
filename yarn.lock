@@ -15,21 +15,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@azure/msal-common@npm:14.3.0":
-  version: 14.3.0
-  resolution: "@azure/msal-common@npm:14.3.0"
-  checksum: 216f655b43949e03c38f98d6b2245478623947c0b11e8a272a9c271a9ce4c441e64c25caba5cd0888d209fc967b1c0dac0eb55baae4812534bf7ef26890ec100
+"@azure/msal-common@npm:14.4.0":
+  version: 14.4.0
+  resolution: "@azure/msal-common@npm:14.4.0"
+  checksum: 6f7519380c837cb4378428239a438ab2298a71df04f6377c146b634639a0f50038cfe964176879e772e4e1d97d084ec693f7dee695d4d0a1fe621eaa2a4f4053
   languageName: node
   linkType: hard
 
-"@azure/msal-node@npm:2.4.0":
-  version: 2.4.0
-  resolution: "@azure/msal-node@npm:2.4.0"
+"@azure/msal-node@npm:2.5.1":
+  version: 2.5.1
+  resolution: "@azure/msal-node@npm:2.5.1"
   dependencies:
-    "@azure/msal-common": "npm:14.3.0"
+    "@azure/msal-common": "npm:14.4.0"
     jsonwebtoken: "npm:^9.0.0"
     uuid: "npm:^8.3.0"
-  checksum: a9e5396dec5c48d708dc4602343a136b0a8829077f150ab53bb07435722e28b1e84f501cefd60b67992c9db5f6a3b39b24cfb199671199a88ed3d138d2a6eb5a
+  checksum: e026dabee1fd0cee1f26acf0403ba54b8d93ec7f95f32a65cdae6fe3f4b79d741804d92f28f1db939c32c9ebb592cd7008353d81fbb24aa542598fde5db3be12
   languageName: node
   linkType: hard
 
@@ -417,11 +417,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/kit@npm:1.27.3":
-  version: 1.27.3
-  resolution: "@sveltejs/kit@npm:1.27.3"
+"@sveltejs/kit@npm:1.27.6":
+  version: 1.27.6
+  resolution: "@sveltejs/kit@npm:1.27.6"
   dependencies:
-    "@sveltejs/vite-plugin-svelte": "npm:^2.4.1"
+    "@sveltejs/vite-plugin-svelte": "npm:^2.5.0"
     "@types/cookie": "npm:^0.5.1"
     cookie: "npm:^0.5.0"
     devalue: "npm:^4.3.1"
@@ -435,42 +435,42 @@ __metadata:
     tiny-glob: "npm:^0.2.9"
     undici: "npm:~5.26.2"
   peerDependencies:
-    svelte: ^3.54.0 || ^4.0.0-next.0
+    svelte: ^3.54.0 || ^4.0.0-next.0 || ^5.0.0-next.0
     vite: ^4.0.0
   bin:
     svelte-kit: svelte-kit.js
-  checksum: f6d10062cfe7ccdfa83749ec52d3802084d33daaa02589caaf806bce07b8acd40cbab30184ad5194d45219c099234f65f371530605d3f6316f4942e97eb7874c
+  checksum: bb3abc6234d246a9717c66d3fa228d64df695d9a147fab51f6c70c0f5d100b7595e4cc48be0a63857b140a89f775f18979165e569c5f840302efe7c97d340c50
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte-inspector@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@sveltejs/vite-plugin-svelte-inspector@npm:1.0.2"
+"@sveltejs/vite-plugin-svelte-inspector@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "@sveltejs/vite-plugin-svelte-inspector@npm:1.0.4"
   dependencies:
     debug: "npm:^4.3.4"
   peerDependencies:
     "@sveltejs/vite-plugin-svelte": ^2.2.0
-    svelte: ^3.54.0 || ^4.0.0-next.0
+    svelte: ^3.54.0 || ^4.0.0
     vite: ^4.0.0
-  checksum: 420d4be8179907908eb475b0d414646db6bf08dc141ef0642156e57267e0d58905bd9184cf24bf45b423759a5de75923f49568180539e02b126f1e70deacecb5
+  checksum: 5e64bcef8f965d90db542d1455fad9218506f6bdcef022fec985dae067321fc6d313278956315b8965b20b10a84e9da098a777c9197e33cfadc5f054b6177b2e
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:^2.4.1":
-  version: 2.4.1
-  resolution: "@sveltejs/vite-plugin-svelte@npm:2.4.1"
+"@sveltejs/vite-plugin-svelte@npm:^2.5.0":
+  version: 2.5.2
+  resolution: "@sveltejs/vite-plugin-svelte@npm:2.5.2"
   dependencies:
-    "@sveltejs/vite-plugin-svelte-inspector": "npm:^1.0.2"
+    "@sveltejs/vite-plugin-svelte-inspector": "npm:^1.0.4"
     debug: "npm:^4.3.4"
     deepmerge: "npm:^4.3.1"
     kleur: "npm:^4.1.5"
-    magic-string: "npm:^0.30.0"
-    svelte-hmr: "npm:^0.15.1"
+    magic-string: "npm:^0.30.3"
+    svelte-hmr: "npm:^0.15.3"
     vitefu: "npm:^0.2.4"
   peerDependencies:
-    svelte: ^3.54.0 || ^4.0.0-next.0
+    svelte: ^3.54.0 || ^4.0.0 || ^5.0.0-next.0
     vite: ^4.0.0
-  checksum: 36fbb0ab799eccf4d43e85d5b1f4a5c55011bc90e48521b5380cad789e00e8e28e3d77edf04605bd1285367b9a74c12f7a1abc7d653d2093242280187b1ed782
+  checksum: ceede0f0cce947b2a6026328cec5b2ae004745a3d507a0527b0ff865e0b2ef539cf1c34bee9e7af94a998070b6ae22332932013dd215953f6d84e46494b54c93
   languageName: node
   linkType: hard
 
@@ -566,10 +566,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/microsoft-graph@npm:2.38.1":
-  version: 2.38.1
-  resolution: "@types/microsoft-graph@npm:2.38.1"
-  checksum: f9c1a4185541ea801f8b92dddddf45f84c5e1f343b0db216d2cdec269302dd2655a6d70ceb30b1d2487dc45670cb8813bdee9c0506f16b13df3ea84d873a67a9
+"@types/microsoft-graph@npm:2.38.3":
+  version: 2.38.3
+  resolution: "@types/microsoft-graph@npm:2.38.3"
+  checksum: 0e2d5454d64c9bee2a38977fb4d82102b5e0469e2bce79963fb8ebe6caa2d2aac094d2ebd2524d47bffddbaa8b99adbf8c5d11954d2ee2a766391ee0fb0d7b1c
   languageName: node
   linkType: hard
 
@@ -587,12 +587,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.8.10":
-  version: 20.8.10
-  resolution: "@types/node@npm:20.8.10"
+"@types/node@npm:20.9.4":
+  version: 20.9.4
+  resolution: "@types/node@npm:20.9.4"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 8930039077c8ad74de74c724909412bea8110c3f8892bcef8dda3e9629073bed65632ee755f94b252bcdae8ca71cf83e89a4a440a105e2b1b7c9797b43483049
+  checksum: d567855b48e453b443499c17fc6c939d154732b54319a05b9b31db6e475e6458f053838635b201b1bb493d349d9b1af0aecc58b28fd6062e564e9fbf593199eb
   languageName: node
   linkType: hard
 
@@ -1231,7 +1231,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"csso@npm:^5.0.5":
+"csso@npm:5.0.5":
   version: 5.0.5
   resolution: "csso@npm:5.0.5"
   dependencies:
@@ -2550,7 +2550,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"magic-string@npm:^0.30.4":
+"magic-string@npm:^0.30.3, magic-string@npm:^0.30.4":
   version: 0.30.5
   resolution: "magic-string@npm:0.30.5"
   dependencies:
@@ -3449,14 +3449,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "onedrive@workspace:onedrive"
   dependencies:
-    "@azure/msal-node": "npm:2.4.0"
+    "@azure/msal-node": "npm:2.5.1"
     "@microsoft/microsoft-graph-client": "npm:3.0.7"
-    "@types/microsoft-graph": "npm:2.38.1"
-    "@types/node": "npm:20.8.10"
+    "@types/microsoft-graph": "npm:2.38.3"
+    "@types/node": "npm:20.9.4"
     dotenv: "npm:16.3.1"
+    json5: "npm:2.2.3"
     open: "npm:9.1.0"
     ts-node: "npm:10.9.1"
-    typescript: "npm:5.2.2"
+    typescript: "npm:5.3.2"
   languageName: unknown
   linkType: soft
 
@@ -3776,9 +3777,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rehype-autolink-headings@npm:7.0.0":
-  version: 7.0.0
-  resolution: "rehype-autolink-headings@npm:7.0.0"
+"rehype-autolink-headings@npm:7.1.0":
+  version: 7.1.0
+  resolution: "rehype-autolink-headings@npm:7.1.0"
   dependencies:
     "@types/hast": "npm:^3.0.0"
     "@ungap/structured-clone": "npm:^1.0.0"
@@ -3786,7 +3787,7 @@ __metadata:
     hast-util-is-element: "npm:^3.0.0"
     unified: "npm:^11.0.0"
     unist-util-visit: "npm:^5.0.0"
-  checksum: 84eb0693ee877f1b654b0e0ae8982c1d16f37e286cc5ef2e2607f8c672dbd7784bb0cee08a8b013b63427683eb62a13afee4100dd8dad2cfb16994852d52cb79
+  checksum: 231ee09e770f2deb6372d110e6c62fbc6645a4df18f4b2f6bb5e5f13d4a868681dacd6a08f05f362f66c4a81cc34bf5af078a0d0a164111671d7dc855290eb0b
   languageName: node
   linkType: hard
 
@@ -4115,28 +4116,27 @@ __metadata:
   dependencies:
     "@poppanator/sveltekit-svg": "npm:4.1.3"
     "@sveltejs/adapter-static": "npm:2.0.3"
-    "@sveltejs/kit": "npm:1.27.3"
-    "@types/node": "npm:20.8.10"
+    "@sveltejs/kit": "npm:1.27.6"
+    "@types/node": "npm:20.9.4"
     colord: "npm:2.9.3"
     csstype: "npm:3.1.2"
     drawio-export-puppeteer: "npm:0.2.0"
     exceljs: "npm:4.4.0"
-    json5: "npm:2.2.3"
     mdsvex: "npm:0.11.0"
     mdsvex-relative-images: "npm:1.0.3"
-    rehype-autolink-headings: "npm:7.0.0"
+    rehype-autolink-headings: "npm:7.1.0"
     rehype-slug-custom-id: "npm:1.1.0"
     remark-gfm: "npm:4.0.0"
     remark-grid-tables: "npm:2.2.0"
     remark-toc: "npm:9.0.0"
     sass: "npm:1.69.5"
     ssf: "npm:0.11.2"
-    svelte: "npm:4.2.2"
-    svelte-check: "npm:3.5.2"
-    svelte-preprocess: "npm:5.0.4"
-    svgo: "npm:3.0.2"
+    svelte: "npm:4.2.7"
+    svelte-check: "npm:3.6.0"
+    svelte-preprocess: "npm:5.1.1"
+    svgo: "npm:3.0.4"
     tslib: "npm:2.6.2"
-    typescript: "npm:5.2.2"
+    typescript: "npm:5.3.2"
     vite: "npm:4.5.0"
     vite-plugin-json5: "npm:1.0.7"
   languageName: unknown
@@ -4295,9 +4295,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-check@npm:3.5.2":
-  version: 3.5.2
-  resolution: "svelte-check@npm:3.5.2"
+"svelte-check@npm:3.6.0":
+  version: 3.6.0
+  resolution: "svelte-check@npm:3.6.0"
   dependencies:
     "@jridgewell/trace-mapping": "npm:^0.3.17"
     chokidar: "npm:^3.4.1"
@@ -4305,28 +4305,28 @@ __metadata:
     import-fresh: "npm:^3.2.1"
     picocolors: "npm:^1.0.0"
     sade: "npm:^1.7.4"
-    svelte-preprocess: "npm:^5.0.4"
+    svelte-preprocess: "npm:^5.1.0"
     typescript: "npm:^5.0.3"
   peerDependencies:
-    svelte: ^3.55.0 || ^4.0.0-next.0 || ^4.0.0
+    svelte: ^3.55.0 || ^4.0.0-next.0 || ^4.0.0 || ^5.0.0-next.0
   bin:
     svelte-check: bin/svelte-check
-  checksum: 1bbba9156c07a5a3734078baad3281fbd34580dc82c33b4b9d4d7e2d7bbe2392ec9e8fa4c9446ee1506175380e235bfd2ca7e365428b153188edaf1944de70f8
+  checksum: f239d0a057b48edca963c8041d431acd8e5024616d254bba8e5e680833fb91364a3d8ffe19ca18a3f6858e613b6818bd15776b9bc3278313f2fe7b55eb292314
   languageName: node
   linkType: hard
 
-"svelte-hmr@npm:^0.15.1":
-  version: 0.15.1
-  resolution: "svelte-hmr@npm:0.15.1"
+"svelte-hmr@npm:^0.15.3":
+  version: 0.15.3
+  resolution: "svelte-hmr@npm:0.15.3"
   peerDependencies:
-    svelte: ">=3.19.0"
-  checksum: 3c5f811bf230756369c5a247c94a19f9458a65f2dd2544849ba7081882ee2a2255b068944b24030d4d4ef87f27491abf5d8203578cbc21466b18fab3356b3032
+    svelte: ^3.19.0 || ^4.0.0
+  checksum: f4185c8eec9c7afe5db62b736c851a7e1a48f40812c372bff127db29a6d47d10b7a2d038134e7699b534c0395814af1073bedd9b3e9139457a6de747e4990272
   languageName: node
   linkType: hard
 
-"svelte-preprocess@npm:5.0.4, svelte-preprocess@npm:^5.0.4":
-  version: 5.0.4
-  resolution: "svelte-preprocess@npm:5.0.4"
+"svelte-preprocess@npm:5.1.1, svelte-preprocess@npm:^5.1.0":
+  version: 5.1.1
+  resolution: "svelte-preprocess@npm:5.1.1"
   dependencies:
     "@types/pug": "npm:^2.0.6"
     detect-indent: "npm:^6.1.0"
@@ -4343,7 +4343,7 @@ __metadata:
     sass: ^1.26.8
     stylus: ^0.55.0
     sugarss: ^2.0.0 || ^3.0.0 || ^4.0.0
-    svelte: ^3.23.0 || ^4.0.0-next.0 || ^4.0.0
+    svelte: ^3.23.0 || ^4.0.0-next.0 || ^4.0.0 || ^5.0.0-next.0
     typescript: ">=3.9.5 || ^4.0.0 || ^5.0.0"
   peerDependenciesMeta:
     "@babel/core":
@@ -4366,13 +4366,13 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: c40939ae535af276a464a90b2ae880e69d3468beab045c4d313e3f5bd6ec29994aa5b9a5836c29131c1e3287e295ee2b94403dad3d51f0f3c04e195fbf88cb5e
+  checksum: 11e725efb4a175a22fd0d4001f987806c585dc605e58927761728a055921553f72f5ccbd08f193579edcec917a3a30960e44b915ba477c94a6aeb3d5eeba28fe
   languageName: node
   linkType: hard
 
-"svelte@npm:4.2.2":
-  version: 4.2.2
-  resolution: "svelte@npm:4.2.2"
+"svelte@npm:4.2.7":
+  version: 4.2.7
+  resolution: "svelte@npm:4.2.7"
   dependencies:
     "@ampproject/remapping": "npm:^2.2.1"
     "@jridgewell/sourcemap-codec": "npm:^1.4.15"
@@ -4387,23 +4387,24 @@ __metadata:
     locate-character: "npm:^3.0.0"
     magic-string: "npm:^0.30.4"
     periscopic: "npm:^3.1.0"
-  checksum: f6d5487cde4bcb30d0f7e199bf8f183ae98806afcc7aca07204fcb1679728080a847ae3d1dc4d533cc0e584744a33266cf444399c37335896b795dbeafd4ed25
+  checksum: 9b856a70d7c62eb179f0ce255872603865d30a2935e30bfb0fa3bcc04cca68da67ad8c0dc460a6ba10b1a2b27ca949fdf0e2c67901106088b10b4fb86aacb3d5
   languageName: node
   linkType: hard
 
-"svgo@npm:3.0.2":
-  version: 3.0.2
-  resolution: "svgo@npm:3.0.2"
+"svgo@npm:3.0.4":
+  version: 3.0.4
+  resolution: "svgo@npm:3.0.4"
   dependencies:
     "@trysound/sax": "npm:0.2.0"
     commander: "npm:^7.2.0"
     css-select: "npm:^5.1.0"
     css-tree: "npm:^2.2.1"
-    csso: "npm:^5.0.5"
+    css-what: "npm:^6.1.0"
+    csso: "npm:5.0.5"
     picocolors: "npm:^1.0.0"
   bin:
-    svgo: bin/svgo
-  checksum: e2c72b166881ef697c1de85628d87e8d41d5e175b3063eab0025760aafe79356507b409fcfa74afffec44a334e59ebe71154909851a72ccb4eb3a5e5217f2e84
+    svgo: ./bin/svgo
+  checksum: 077858c571b3ad988b0cf72c132fb766b293a6edeab62c5da648050473622c9ffdcf7870d3dd87cd7a74e2a71a43d382221dff79f6094f0bd63c382361dcab8f
   languageName: node
   linkType: hard
 
@@ -4561,13 +4562,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.2.2":
-  version: 5.2.2
-  resolution: "typescript@npm:5.2.2"
+"typescript@npm:5.3.2":
+  version: 5.3.2
+  resolution: "typescript@npm:5.3.2"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: d65e50eb849bd21ff8677e5b9447f9c6e74777e346afd67754934264dcbf4bd59e7d2473f6062d9a015d66bd573311166357e3eb07fea0b52859cf9bb2b58555
+  checksum: 415e5fb6611f5713e460bad48039f00bcfdbde53a2f911727862d5aa9c5d5edd250059a419df382d8f031709e15a169c41eb62b6a401da5eec7ac0f4e359d6ac
   languageName: node
   linkType: hard
 
@@ -4581,13 +4582,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>":
-  version: 5.2.2
-  resolution: "typescript@patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"
+"typescript@patch:typescript@npm%3A5.3.2#optional!builtin<compat/typescript>":
+  version: 5.3.2
+  resolution: "typescript@patch:typescript@npm%3A5.3.2#optional!builtin<compat/typescript>::version=5.3.2&hash=e012d7"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: f79cc2ba802c94c2b78dbb00d767a10adb67368ae764709737dc277273ec148aa4558033a03ce901406b35fddf4eac46dabc94a1e1d12d2587e2b9cfe5707b4a
+  checksum: 1b45cdfb577a78ae7a9a9d0b77a7b772142cb98ba05e4e5aefba7044a028ded885bcecef63166407a5986645cea816fe4986894336aacd5e791796ea79a6a7ed
   languageName: node
   linkType: hard
 

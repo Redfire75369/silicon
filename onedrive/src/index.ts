@@ -6,7 +6,7 @@ import {open, writeFile} from "fs/promises";
 import openBrowser from "open";
 import {resolve} from "path";
 
-import metadata, {dir} from "./workbook.js";
+import metadata, {dir} from "./workbook";
 
 import type {Configuration, InteractiveRequest, SilentFlowRequest} from "@azure/msal-node";
 import type {ClientOptions} from "@microsoft/microsoft-graph-client";
@@ -33,7 +33,7 @@ async function getAccessToken() {
 	const pca = new PublicClientApplication(pcaOptions);
 
 	if (!existsSync(cachePath)) {
-		await writeFile(cachePath, "");
+		await writeFile(cachePath, "{}");
 	}
 	const cacheFile = await open(cachePath, "r+");
 
@@ -55,9 +55,8 @@ async function getAccessToken() {
 				return credentials.accessToken;
 			}
 		} catch (e) {
-			if (!(e instanceof InteractionRequiredAuthError)) {
-				await cacheFile.close();
-				throw e;
+			if (!(e instanceof InteractionRequiredAuthError) && e instanceof Error) {
+				console.error("Error occured while acquiring token from cache:", e.name);
 			}
 		}
 	}

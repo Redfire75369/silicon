@@ -1,4 +1,3 @@
-// @ts-ignore
 import meta from "content/spreadsheets/metadata.json5";
 
 export type WorksheetMetadata = [name: string, width: number, height: number];
@@ -10,4 +9,3 @@ export type WorkbookMetadata = {
 };
 
 export const metadata: Record<string, WorkbookMetadata> = meta;
-

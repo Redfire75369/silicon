@@ -4,10 +4,10 @@ import {existsSync} from "fs";
 import {mkdir} from "fs/promises";
 
 import {contentDir} from "$lib/directory.server";
+import {metadata} from "$lib/spreadsheet/workbook";
 import type {WorksheetMetadata} from "$lib/spreadsheet/workbook";
 import type {Cell, Column, Range, Row} from "$lib/spreadsheet/types";
 import ExcelJS from "exceljs";
-import workbook from "onedrive/workbook";
 
 async function getWorkbook(key: string): Promise<Workbook> {
 	const workbook = new ExcelJS.Workbook();
@@ -15,12 +15,11 @@ async function getWorkbook(key: string): Promise<Workbook> {
 }
 
 export const workbooks: Record<string, Workbook> = Object.fromEntries(
-	await Promise.all(Object.keys(workbook).map(async key => {
+	await Promise.all(Object.keys(metadata).map(async key => {
 		const workbook = await getWorkbook(key);
 		return [key, workbook];
 	}))
 );
-
 
 export async function getWorksheet(workbook_key: string, workbook: Workbook, key: string, metadata: WorksheetMetadata) {
 	const worksheet = workbook.getWorksheet(metadata[0]);
