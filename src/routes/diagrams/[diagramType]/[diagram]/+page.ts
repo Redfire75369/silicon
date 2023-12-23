@@ -6,12 +6,12 @@ import {metadata} from "$lib/diagram/diagram";
 /** @type {import("./$types").PageLoad} */
 export async function load({params}: PageLoadEvent) {
 	if (!(params.diagramType in metadata)) {
-		throw error(404, "Invalid Diagram");
+		error(404, "Invalid Diagram");
 	}
 
 	const meta = metadata[params.diagramType];
 	if (!(params.diagram in meta.variants)) {
-		throw error(404, "Invalid Diagram");
+		error(404, "Invalid Diagram");
 	}
 
 	const variant = meta.variants[params.diagram];

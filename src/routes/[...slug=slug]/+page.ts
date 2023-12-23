@@ -24,13 +24,13 @@ export async function load({params}: PageLoadEvent) {
 	} else if (content[`../../content${slug}index.svx`]) {
 		mdsvex = await content[`../../content${slug}index.svx`]();
 	} else {
-		throw error(404, "Page Not Found");
+		error(404, "Page Not Found");
 	}
 
 	const body = mdsvex.default;
 
 	if (body === undefined) {
-		throw error(404, "Failed to Parse MDSveX");
+		error(404, "Failed to Parse MDSveX");
 	}
 
 	return {

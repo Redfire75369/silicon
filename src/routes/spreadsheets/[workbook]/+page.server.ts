@@ -8,7 +8,7 @@ import type {PageServerLoadEvent} from "./$types";
 /** @type {import("./$types").PageServerLoad} */
 export async function load({params}: PageServerLoadEvent) {
 	if (!(params.workbook in workbooks)) {
-		throw error(404, "Invalid Spreadsheet");
+		error(404, "Invalid Spreadsheet");
 	}
 	const workbook = workbooks[params.workbook];
 	const meta = metadata[params.workbook];

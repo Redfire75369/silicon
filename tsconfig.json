@@ -8,7 +8,7 @@
 			"dom.iterable",
 			"esnext"
 		],
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 
 		"jsx": "preserve",
 		"noEmit": true,
@@ -17,13 +17,11 @@
 
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
-		"importsNotUsedAsValues": "error",
 		"isolatedModules": true,
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitReturns": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"preserveValueImports": true,
 
 		"skipLibCheck": true,
 		"resolveJsonModule": true,

@@ -7,12 +7,12 @@ import saveDiagram from "$lib/diagram/svg";
 /** @type {import("./$types").PageServerLoad} */
 export async function load({params}: PageServerLoadEvent) {
 	if (!(params.diagramType in metadata)) {
-		throw error(404, "Invalid Diagram");
+		error(404, "Invalid Diagram");
 	}
 
 	const meta = metadata[params.diagramType];
 	if (!(params.diagram in meta.variants)) {
-		throw error(404, "Invalid Diagram");
+		error(404, "Invalid Diagram");
 	}
 
 	await saveDiagram(params.diagramType, params.diagram);

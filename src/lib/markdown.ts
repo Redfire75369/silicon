@@ -45,14 +45,14 @@ async function getMetadata(slug: Slug): Promise<Metadata> {
 	if (content[slug.path] !== undefined) {
 		const metadata = (await content[slug.path]()).metadata;
 		if (metadata.author && typeof metadata.author !== "string") {
-			throw error(406, "Invalid Author");
+			error(406, "Invalid Author");
 		} else if (metadata.title && typeof metadata.title !== "string") {
-			throw error(406, "Invalid Title");
+			error(406, "Invalid Title");
 		}
 		// @ts-ignore
 		return metadata;
 	}
-	throw error(404, "Metadata Not Found");
+	error(404, "Metadata Not Found");
 }
 
 export const slugs = getSlugs();
