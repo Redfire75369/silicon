@@ -5,10 +5,10 @@ import {fileURLToPath} from "url";
 
 import type {WorkbookMetadata} from "../../src/lib/spreadsheet/workbook";
 
-export const dir = dirname(fileURLToPath(import.meta.url));
+export const dir = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 
 const metadata: Record<string, WorkbookMetadata> = JSON5.parse(
-	await readFile(resolve(dir, "..", "src", "content", "spreadsheets", "metadata.json5"), {encoding: "utf8"})
+	await readFile(resolve(dir, "src", "content", "spreadsheets", "metadata.json5"), {encoding: "utf8"})
 );
 
 export default metadata;

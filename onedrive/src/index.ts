@@ -11,10 +11,10 @@ import {resolve} from "path";
 import metadata, {dir} from "./workbook";
 
 dotenv.config({
-	path: resolve(dir, "..", ".env")
+	path: resolve(dir, ".env")
 });
 
-const cachePath = resolve(dir, ".cache.json");
+const cachePath = resolve(dir, "onedrive", ".cache.json");
 
 async function getAccessToken() {
 	if (process.env.MICROSOFT_CLIENT_ID === undefined) {
@@ -76,7 +76,7 @@ async function getAccessToken() {
 async function syncSpreadsheet(client: Client, key: string) {
 	const apiRoute = `/me/drive/root:${metadata[key].path}:/content`;
 	const response: ArrayBuffer = await client.api(apiRoute).responseType(ResponseType.ARRAYBUFFER).get();
-	const path = resolve(dir, "..", "src", "content", "spreadsheets", `${key}.xlsx`);
+	const path = resolve(dir, "src", "content", "spreadsheets", `${key}.xlsx`);
 	await writeFile(path, new Uint8Array(response, 0, response.byteLength));
 	console.info(`[XLSX]: Synced to ${path}`);
 }
