@@ -25,7 +25,7 @@ const saves: Saves = {
 			if (existsSync(diagramTimestamp)) {
 				const timestamp = new Date(await readFile(diagramTimestamp, {encoding: "utf8"}));
 				if (timestamp >= stats.mtime) {
-					console.info(`[SVG]: Found Diagram (${key}) in Cache`);
+					console.info(`[SVG]: Found Diagram (${key}:${variant}) in Cache`);
 					return;
 				}
 			}

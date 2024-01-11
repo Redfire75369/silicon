@@ -9,7 +9,7 @@
 	export let data: PageData;
 
 	const {slug, body, metadata} = data;
-	const url = `https://silicon.redfire.dev/${slug}/`;
+	const url = `https://silicon.redfire.dev${slug}`;
 </script>
 
 <svelte:head>
