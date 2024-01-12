@@ -2,7 +2,10 @@
 	import Container from "components/Container.svelte";
 	import Header from "components/Header.svelte";
 	import Markdown from "components/Markdown.svelte";
+	import Meta from "components/Meta.svelte";
 </script>
+
+<Meta title="Diagrams" author="Redfire"/>
 
 <Container>
 	<Header>Diagrams</Header>
@@ -15,6 +18,7 @@
 					<li><a href="mesh/cascade-lake/">Cascade Lake-SP (ICX-SP)</a></li>
 					<li><a href="mesh/ice-lake/">Ice Lake-SP (ICX-SP)</a></li>
 					<li><a href="mesh/sapphire-rapids/">Sapphire Rapids-SP (SPR-SP)</a></li>
+					<li><a href="mesh/emerald-rapids/">Emerald Rapids-SP (EMR-SP)</a></li>
 				</ul>
 			</li>
 		</ul>

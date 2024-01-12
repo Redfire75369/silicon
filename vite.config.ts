@@ -1,7 +1,7 @@
 import svg from "@poppanator/sveltekit-svg";
 import {sveltekit} from "@sveltejs/kit/vite";
 import type {UserConfig} from "vite";
-import {json5Plugin as json5} from "vite-plugin-json5";
+import json5 from "vite-plugin-json5";
 
 const config: UserConfig = {
 	plugins: [

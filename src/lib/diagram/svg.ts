@@ -19,13 +19,13 @@ const saves: Saves = {
 
 			const diagramFile = resolve(contentDir, "diagrams", `${key}.drawio`);
 			const diagramCacheDir = resolve(cacheDir, "diagrams");
-			const diagramTimestamp = resolve(diagramCacheDir, `${key}.drawio.timestamp`);
+			const diagramTimestamp = resolve(diagramCacheDir, `${key}-${codename}.drawio.timestamp`);
 
 			const stats = await stat(diagramFile);
 			if (existsSync(diagramTimestamp)) {
 				const timestamp = new Date(await readFile(diagramTimestamp, {encoding: "utf8"}));
 				if (timestamp >= stats.mtime) {
-					console.info(`[SVG]: Found Diagram (${key}:${variant}) in Cache`);
+					console.info(`[SVG]: Found Diagram (${key}:${codename}) in Cache`);
 					return;
 				}
 			}
@@ -45,11 +45,11 @@ const saves: Saves = {
 
 			await Promise.all(diagrams.map((diagram, index) => {
 				const path = resolve(generatedDir, `${codename}-${dies[index]}.svg`);
-				console.info(`[SVG]: Writing Diagram (${key}) to ${path}`);
+				console.info(`[SVG]: Writing Diagram (${key}:${codename}) to ${path}`);
 				return writeFile(path, diagram, {encoding: "utf8", flag: "w"});
 			}));
 
-			console.info(`[SVG]: Writing Diagram (${key}) Timestamp to Cache`);
+			console.info(`[SVG]: Writing Diagram (${key}:${codename}) Timestamp to Cache`);
 			await writeFile(diagramTimestamp, stats.mtime.toISOString(), {encoding: "utf8", flag: "w"});
 		}
 	}

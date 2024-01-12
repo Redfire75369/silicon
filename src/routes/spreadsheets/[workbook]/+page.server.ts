@@ -18,8 +18,7 @@ export async function load({params}: PageServerLoadEvent) {
 	);
 
 	return {
-		keys: Object.keys(meta.sheets),
-		names: Object.values(meta.sheets).map(meta => meta[0]),
-		worksheets: worksheets
+		meta,
+		worksheets,
 	};
 }

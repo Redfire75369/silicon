@@ -2,7 +2,10 @@
 	import Container from "components/Container.svelte";
 	import Header from "components/Header.svelte";
 	import Markdown from "components/Markdown.svelte";
+	import Meta from "components/Meta.svelte";
 </script>
+
+<Meta title="Spreadsheets" author="Redfire"/>
 
 <Container>
 	<Header>Spreadsheets</Header>

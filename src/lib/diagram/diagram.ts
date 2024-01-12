@@ -5,7 +5,7 @@ interface Meshes {
 	codename: string,
 	start: number,
 	dies: string[],
-	dieNames: string[]
+	dieNames: string[],
 }
 
 export type Variant = Meshes;
