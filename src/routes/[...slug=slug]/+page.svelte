@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Container from "components/Container.svelte";
-	import Header from "components/Header.svelte";
+	import Header from "components/header/Header.svelte";
 	import Markdown from "components/Markdown.svelte";
 	import Meta from "components/Meta.svelte";
 	import Navigation from "components/navigation/Navigation.svelte";
@@ -17,7 +17,7 @@
 <Meta {title} {author} {type} {icon} {description} {tags} slug={slug.slice(1)}/>
 
 <Container>
-	<Header>{metadata.title}</Header>
+	<Header>{title}</Header>
 	<Markdown>
 		<svelte:component this={body}/>
 		{#if index}

@@ -55,7 +55,7 @@ async function getAccessToken() {
 			}
 		} catch (e) {
 			if (!(e instanceof InteractionRequiredAuthError) && e instanceof Error) {
-				console.error("Error occured while acquiring token from cache:", e.name);
+				console.error("Error occurred while acquiring token from cache:", e.name);
 			}
 		}
 	}

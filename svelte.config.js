@@ -6,7 +6,7 @@ import remarkGridTables from "remark-grid-tables";
 import remarkToc from "remark-toc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug-custom-id";
-import preprocess from "svelte-preprocess";
+import {sveltePreprocess} from "svelte-preprocess";
 
 /** @type {import("mdsvex").MdsvexOptions} */
 const mdsvexConfig = {
@@ -29,7 +29,7 @@ const config = {
 	extensions: [".svelte", ".svx"],
 	preprocess: [
 		mdsvex(mdsvexConfig),
-		preprocess(),
+		sveltePreprocess(),
 	],
 	kit: {
 		adapter: adapter({

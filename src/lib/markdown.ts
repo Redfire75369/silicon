@@ -43,13 +43,12 @@ export function getSlugs(): Slug[] {
 async function getMetadata(slug: Slug): Promise<Metadata> {
 	const content = import.meta.glob<MDSveX>("../content/**/*.svx");
 	if (content[slug.path] !== undefined) {
-		const metadata = (await content[slug.path]()).metadata;
+		const metadata = (await content[slug.path]()).metadata satisfies Metadata;
 		if (metadata.author && typeof metadata.author !== "string") {
 			error(406, "Invalid Author");
 		} else if (metadata.title && typeof metadata.title !== "string") {
 			error(406, "Invalid Title");
 		}
-		// @ts-ignore
 		return metadata;
 	}
 	error(404, "Metadata Not Found");

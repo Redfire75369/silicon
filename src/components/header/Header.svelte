@@ -48,7 +48,7 @@
 <div class="header">
 	<div class="header-inner">
 		<a href="/">
-			<img src="/images/icon.png" alt="Silicon Logo">
+			<enhanced:img src="./icon.png" alt="Silicon Logo"/>
 		</a>
 		<div class="title">
 			<h1>
@@ -56,7 +56,7 @@
 			</h1>
 		</div>
 		<a href="https://mastodon.online/@redfire" rel="me">
-			<img src="/images/mastodon.png" alt="Mastodon Logo" class="small">
+			<enhanced:img src="./mastodon.png" alt="Mastodon Logo" class="small"/>
 		</a>
 	</div>
 </div>

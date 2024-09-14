@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Container from "components/Container.svelte";
-	import Header from "components/Header.svelte";
+	import Header from "components/header/Header.svelte";
 	import Meta from "components/Meta.svelte";
 	import type {PageData} from "./$types";
 

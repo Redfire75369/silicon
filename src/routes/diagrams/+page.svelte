@@ -1,6 +1,6 @@
 <script>
 	import Container from "components/Container.svelte";
-	import Header from "components/Header.svelte";
+	import Header from "components/header/Header.svelte";
 	import Markdown from "components/Markdown.svelte";
 	import Meta from "components/Meta.svelte";
 </script>

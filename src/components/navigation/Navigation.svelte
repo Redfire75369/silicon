@@ -36,10 +36,12 @@
 		const segments = slug.segments(existing);
 		let m: SlugMap = map;
 		for (const segment of segments) {
+			if (typeof m[segment] === "string") {
+				break;
+			}
 			if (typeof m[segment] === "undefined") {
 				m[segment] = {};
 			}
-			// @ts-ignore
 			m = m[segment];
 		}
 		m.index = metadata[slug.slug].navigation ?? metadata[slug.slug].title;
