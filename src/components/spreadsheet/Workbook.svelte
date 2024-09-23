@@ -1,13 +1,17 @@
 <script lang="ts">
 	import Worksheet from "components/spreadsheet/Worksheet.svelte";
-	import type {Worksheet as WorksheetT} from "$lib/spreadsheet/types";
+	import type {Worksheet as WorksheetT} from "$lib/spreadsheet/workbook";
 
-	export let keys: string[];
-	export let names: string[];
-	export let worksheets: WorksheetT[];
+	interface Props {
+		keys: string[],
+		names: string[],
+		worksheets: WorksheetT[],
+	}
 
-	let currentIndex = 0;
-	$: worksheet = worksheets[currentIndex];
+	let {keys, names, worksheets}: Props = $props();
+
+	let currentIndex = $state(0);
+	let worksheet = $derived(worksheets[currentIndex]);
 
 	const callbacks = keys.map((_, index) => {
 		return () => {
@@ -92,7 +96,7 @@
 					{names[index]}
 				</div>
 			{:else}
-				<button class="tab inactive" on:click={callbacks[index]}>
+				<button class="tab inactive" onclick={callbacks[index]}>
 					{names[index]}
 				</button>
 			{/if}

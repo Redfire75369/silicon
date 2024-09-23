@@ -3,10 +3,15 @@
 	import {navigation, routes} from "$lib/navigation";
 	import type {Slug} from "$lib/markdown";
 	import type {SlugMap} from "$lib/navigation";
+	import Self from "./Section.svelte";
 
-	export let slugString: string;
-	export let slugs: Slug[];
-	export let map: SlugMap;
+	interface Props {
+		slugString: string,
+		slugs: Slug[],
+		map: SlugMap,
+	}
+
+	let {slugString, slugs, map}: Props = $props();
 
 	interface EmptyEntry {
 		type: "empty",
@@ -64,7 +69,7 @@
 		{#if entry.type === "nested"}
 			<li>
 				{entry.navigation}
-				<svelte:self slugString={entry.href} slugs={slugs} map={entry.value}/>
+				<Self slugString={entry.href} slugs={slugs} map={entry.value}/>
 			</li>
 		{:else if entry.type === "link"}
 			<li>

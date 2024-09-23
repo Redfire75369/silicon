@@ -1,11 +1,15 @@
 <script lang="ts">
-	export let title: string;
-	export let author: string;
-	export let type: string | undefined = undefined;
-	export let icon: string | undefined = undefined;
-	export let description: string | undefined = undefined;
-	export let tags: string[] | undefined = undefined;
-	export let slug: string | undefined = undefined;
+	interface Props {
+		title: string,
+		author: string,
+		type?: string,
+		icon?: string,
+		description?: string,
+		tags?: string[],
+		slug?: string,
+	}
+
+	let {title, author, type, icon, description, tags, slug}: Props = $props();
 </script>
 
 <svelte:head>

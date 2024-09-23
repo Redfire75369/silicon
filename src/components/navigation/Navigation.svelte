@@ -4,7 +4,10 @@
 	import type {SlugMap} from "$lib/navigation";
 	import Section from "components/navigation/Section.svelte";
 
-	export let current: string;
+	interface Props {
+		current: string,
+	}
+	let {current}: Props = $props();
 
 	let navigationSlugs = slugs.filter(slug => slug.slug.startsWith(current) && slug.slug !== current);
 

@@ -1,7 +1,10 @@
 <script lang="ts">
-	export let cell: string;
+	interface Props {
+		cell: string
+	}
+	let {cell}: Props = $props();
 
-	$: hyperlink = null;
+ 	let hyperlink = $state(null);
 </script>
 
 {#if hyperlink}
