@@ -1,10 +1,9 @@
 <script lang="ts">
 	interface Props {
-		cell: string
+		cell: string,
+		hyperlink?: string,
 	}
-	let {cell}: Props = $props();
-
- 	let hyperlink = $state(null);
+	let {cell, hyperlink}: Props = $props();
 </script>
 
 {#if hyperlink}

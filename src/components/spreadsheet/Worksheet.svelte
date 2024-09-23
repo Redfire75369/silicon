@@ -30,7 +30,7 @@
 					}
 				}
 
-				return { ...cell.merge, style, sticky, cell: cell.value };
+				return { ...cell.merge, style, sticky, cell: cell.value, hyperlink: cell.hyperlink };
 			}),
 		),
 	);
@@ -52,7 +52,7 @@
 			<thead>
 				{#each rows.slice(0, frozenY) as row}
 					<tr>
-						{#each row as { primary, column_span, row_span, style, sticky, cell }}
+						{#each row as { primary, column_span, row_span, style, sticky, cell, hyperlink }}
 							{#if primary}
 								<th
 									scope="col"
@@ -61,7 +61,7 @@
 									colspan={column_span}
 									rowspan={row_span}
 								>
-									<Cell {cell} />
+									<Cell {cell} {hyperlink} />
 								</th>
 							{:else}
 								<th scope="col" style="display: none;">
@@ -75,7 +75,7 @@
 			<tbody>
 				{#each rows.slice(frozenY, worksheet.rows.length) as row}
 					<tr>
-						{#each row as { primary, column_span, row_span, style, sticky, cell }}
+						{#each row as { primary, column_span, row_span, style, sticky, cell, hyperlink }}
 							{#if primary}
 								<td
 									class={sticky}
@@ -83,7 +83,7 @@
 									colspan={column_span}
 									rowspan={row_span}
 								>
-									<Cell {cell} />
+									<Cell {cell} {hyperlink} />
 								</td>
 							{:else}
 								<td style="display: none;">

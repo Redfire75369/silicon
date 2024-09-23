@@ -13,6 +13,7 @@ export const metadata: Record<string, WorkbookMetadata> = meta;
 
 export interface Cell {
 	value: string,
+	hyperlink?: string,
 	merge: {
 		primary: boolean,
 		column_span: number,

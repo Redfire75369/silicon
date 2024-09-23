@@ -19,6 +19,8 @@ pub mod style;
 pub struct Cell {
 	pub value: String,
 	pub format: String,
+	pub hyperlink: Option<String>,
+
 	pub merge: Merge,
 	pub style: String,
 }
@@ -116,9 +118,12 @@ impl Workbook {
 					.into_iter()
 					.map(|c| {
 						let index = (r * columns + c) as usize;
+						let cell = worksheet.get_cell((c + 1, r + 1)).cloned().unwrap_or_default();
+						let style = cell.get_style();
+
+						let hyperlink = cell.get_hyperlink().map(|hl| String::from(hl.get_url()));
 
 						let (format, style) = if merges[index].primary {
-							let style = worksheet.get_style((c + 1, r + 1));
 							let format = style.get_number_format().cloned().unwrap_or_default();
 
 							let style = get_css_style(worksheet, c, r, &borders[index]);
@@ -132,6 +137,8 @@ impl Workbook {
 						Cell {
 							value: worksheet.get_value((c + 1, r + 1)),
 							format: String::from(format.get_format_code()),
+							hyperlink,
+
 							merge: merges[index],
 							style,
 						}

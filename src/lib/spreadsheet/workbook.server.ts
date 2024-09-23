@@ -22,12 +22,13 @@ export async function getWorksheet(workbook_key: keyof typeof workbooks, key: st
 		throw new Error(`Worksheet ${metadata[0]} not found in workbook`);
 	}
 
-	const rows = worksheet.rows.map(r => ({
-		cells: r.cells.map(cell => {
+	const rows = worksheet.rows.slice(0, metadata[2]).map(r => ({
+		cells: r.cells.slice(0, metadata[1]).map(cell => {
 			const value = isNaN(parseFloat(cell.value)) ? cell.value : parseFloat(cell.value);
 
 			return {
 				value: SSF.format(cell.format, value),
+				hyperlink: cell.hyperlink,
 
 				merge: {
 					primary: cell.merge.primary,
@@ -54,8 +55,8 @@ export async function getWorksheet(workbook_key: keyof typeof workbooks, key: st
 		name: worksheet.name,
 
 		rows,
-		column_widths: [...worksheet.column_widths],
-		row_heights: [...worksheet.row_heights],
+		column_widths: [...worksheet.column_widths].slice(0, metadata[1]),
+		row_heights: [...worksheet.row_heights].slice(0, metadata[2]),
 
 		pane: worksheet.pane ? {
 			horizontal_split: worksheet.pane.horizontal_split,
