@@ -9,7 +9,7 @@
     "onedrive:sync": "cross-env SWC_NODE_PROJECT=./onedrive/tsconfig.json node --import ./register.js src/index.ts"
   },
   "dependencies": {
-    "@azure/msal-node": "2.13.1",
+    "@azure/msal-node": "2.14.0",
     "@microsoft/microsoft-graph-client": "3.0.7",
     "dotenv": "16.4.5",
     "json5": "2.2.3",

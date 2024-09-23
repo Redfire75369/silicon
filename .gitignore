@@ -18,6 +18,9 @@ vite.config.ts.timestamp-*
 node_modules/*
 yarn-error.log
 
+### Rust ###
+parser/target/**
+
 ### Edtitors ###
 ## WebStorm ##
 .idea/**

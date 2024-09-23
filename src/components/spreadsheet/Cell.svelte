@@ -1,15 +1,11 @@
 <script lang="ts">
-	import type {Cell} from "$lib/spreadsheet/types";
-	import {cellToHyperlink, cellToString} from "$lib/spreadsheet/cell";
+	export let cell: string;
 
-	export let cell: Cell;
-
-	$: hyperlink = cellToHyperlink(cell);
-	$: text = cellToString(cell);
+	$: hyperlink = null;
 </script>
 
 {#if hyperlink}
-	<a target="_blank" rel="noreferrer" href={hyperlink}>{text}</a>
+	<a target="_blank" rel="noreferrer" href={hyperlink}>{cell}</a>
 {:else }
-	<div>{text}</div>
+	<div>{cell}</div>
 {/if}

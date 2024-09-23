@@ -1,3 +1,23 @@
+<div class="header">
+	<div class="header-inner">
+		<a href="/">
+			<enhanced:img src="./icon.png" alt="Silicon Logo" />
+		</a>
+		<div class="title">
+			<h1>
+				<slot />
+			</h1>
+		</div>
+		<a href="https://mastodon.online/@redfire" rel="me">
+			<enhanced:img
+				src="./mastodon.png"
+				alt="Mastodon Logo"
+				class="small"
+			/>
+		</a>
+	</div>
+</div>
+
 <style lang="scss">
 	$width: max(80vw, min(95vw, 700px));
 
@@ -12,22 +32,27 @@
 			justify-content: start;
 
 			a {
-				display: flex;
-				flex-direction: row;
 				margin-left: 0.25rem;
 				margin-right: 0.25rem;
 
-				img {
-					margin-top: 0.5rem;
-					align-self: center;
-					justify-self: center;
+				picture {
+					margin-top: 0.7rem;
+					display: flex;
 					height: 5rem;
 					width: 5rem;
-				}
 
-				img.small {
-					height: 2.25rem;
-					width: 2.25rem;
+					img {
+						align-self: center;
+						justify-self: center;
+						height: 5rem;
+						width: 5rem;
+					}
+
+					.small {
+						height: 3rem;
+						width: 3rem;
+						margin: auto;
+					}
 				}
 			}
 
@@ -38,25 +63,9 @@
 
 				h1 {
 					font-size: 2.5rem;
-					color: #E5E7EB;
+					color: #e5e7eb;
 				}
 			}
 		}
 	}
 </style>
-
-<div class="header">
-	<div class="header-inner">
-		<a href="/">
-			<enhanced:img src="./icon.png" alt="Silicon Logo"/>
-		</a>
-		<div class="title">
-			<h1>
-				<slot/>
-			</h1>
-		</div>
-		<a href="https://mastodon.online/@redfire" rel="me">
-			<enhanced:img src="./mastodon.png" alt="Mastodon Logo" class="small"/>
-		</a>
-	</div>
-</div>

@@ -38,6 +38,7 @@ const config = {
 		alias: {
 			"components": "src/components",
 			"content": "src/content",
+			"parser": "parser/pkg",
 		},
 	},
 };
