@@ -76,7 +76,11 @@ impl Workbook {
 
 					return acc.max(border.left.width.into_int() + border.right.width.into_int());
 				});
-				let mut width = *worksheet.get_column_dimension_by_number(&(c + 1)).unwrap().get_width();
+
+				let mut width = 0.0;
+				if let Some(column) = worksheet.get_column_dimension_by_number(&(c + 1)) {
+					width = *column.get_width();
+				}
 				if width == 0.0 {
 					width = *worksheet.get_sheet_format_properties().get_default_column_width();
 				}
@@ -93,7 +97,11 @@ impl Workbook {
 
 					return acc.max(border.top.width.into_int() + border.bottom.width.into_int());
 				});
-				let mut height = *worksheet.get_row_dimension(&(r + 1)).unwrap().get_height();
+
+				let mut height = 0.0;
+				if let Some(row) = worksheet.get_row_dimension(&(r + 1)) {
+					height = *row.get_height();
+				}
 				if height == 0.0 {
 					height = *worksheet.get_sheet_format_properties().get_default_row_height();
 				}
