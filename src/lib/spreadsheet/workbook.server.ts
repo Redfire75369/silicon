@@ -16,14 +16,14 @@ export const workbooks: Record<string, Workbook> = Object.fromEntries(
 
 export async function getWorksheet(workbook_key: keyof typeof workbooks, key: string, metadata: WorksheetMetadata): Promise<Worksheet> {
 	const workbook = workbooks[workbook_key];
-	const worksheet = workbook.get_worksheet(metadata[0]);
+	const worksheet = workbook.get_worksheet(metadata.name);
 
 	if (worksheet === undefined) {
-		throw new Error(`Worksheet ${metadata[0]} not found in workbook`);
+		throw new Error(`Worksheet ${metadata.name} not found in workbook`);
 	}
 
-	const rows = worksheet.rows.slice(0, metadata[2]).map(r => ({
-		cells: r.cells.slice(0, metadata[1]).map(cell => {
+	const rows = worksheet.rows.slice(0, metadata.height).map(r => ({
+		cells: r.cells.slice(0, metadata.width).map(cell => {
 			const value = isNaN(Number(cell.value)) ? cell.value : Number(cell.value);
 
 			return {
@@ -48,15 +48,15 @@ export async function getWorksheet(workbook_key: keyof typeof workbooks, key: st
 		await mkdir(folder, { recursive: true });
 	}
 
-	const csv = workbook.get_csv(metadata[0]);
+	const csv = workbook.get_csv(metadata.name);
 	await writeFile(csvFile, csv);
 
 	return {
 		name: worksheet.name,
 
 		rows,
-		column_widths: [...worksheet.column_widths].slice(0, metadata[1]),
-		row_heights: [...worksheet.row_heights].slice(0, metadata[2]),
+		column_widths: [...worksheet.column_widths].slice(0, metadata.width),
+		row_heights: [...worksheet.row_heights].slice(0, metadata.height),
 
 		pane: worksheet.pane ? {
 			horizontal_split: worksheet.pane.horizontal_split,
