@@ -1,0 +1,42 @@
+name: "Build with SvelteKit"
+description: ""
+
+runs:
+  using: composite
+  steps:
+    - name: Update Submodules
+      shell: bash
+      run: git submodule update --recursive --remote
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: "20"
+        cache: yarn
+
+    - name: Setup Rust
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: Restore cache
+      uses: actions/cache@v4
+      with:
+        path: |
+          .svelte-kit
+          build
+        key: ${{ runner.os }}-vite-build-${{ hashFiles('build') }}
+        restore-keys: ${{ runner.os }}-vite-build-
+
+    - name: Install Dependencies
+      shell: bash
+      run: yarn install --immutable
+
+    - name: Build with Vite
+      env:
+        ROOT_DIRECTORY: /home/runner/work/silicon/silicon/
+      shell: bash
+      run: yarn build
+
+    - name: Upload Artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./build

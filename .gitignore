@@ -1,7 +1,6 @@
 ### SvelteKit ###
-.svelte-kit/
-build/
-package/
+.svelte-kit/**
+build/**
 
 ### Vite ###
 vite.config.ts.timestamp-*

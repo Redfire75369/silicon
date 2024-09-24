@@ -24,7 +24,7 @@ export async function getWorksheet(workbook_key: keyof typeof workbooks, key: st
 
 	const rows = worksheet.rows.slice(0, metadata[2]).map(r => ({
 		cells: r.cells.slice(0, metadata[1]).map(cell => {
-			const value = isNaN(parseFloat(cell.value)) ? cell.value : parseFloat(cell.value);
+			const value = isNaN(Number(cell.value)) ? cell.value : Number(cell.value);
 
 			return {
 				value: SSF.format(cell.format, value),

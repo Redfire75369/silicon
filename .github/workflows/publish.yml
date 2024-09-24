@@ -24,41 +24,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           token: "${{ secrets.ACCESS_TOKEN }}"
           submodules: "recursive"
 
-      - name: Update Submodules
-        run: git submodule update --recursive --remote
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18"
-          cache: yarn
-
-      - name: Restore cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            .svelte-kit
-            build
-          key: ${{ runner.os }}-vite-build-${{ hashFiles('build') }}
-          restore-keys: ${{ runner.os }}-vite-build-
-
-      - name: Install Dependencies
-        run: yarn install --immutable
-
-      - name: Build with Vite
-        env:
-          ROOT_DIRECTORY: /home/runner/work/silicon/silicon/
-        run: yarn build
-
-      - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./build
+      - uses: ./.github/actions/build
 
   deploy:
     environment:
@@ -69,4 +40,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
