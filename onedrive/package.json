@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "author": "Redfire",
-  "packageManager": "yarn@4.0.2",
+  "packageManager": "yarn@4.5.0",
   "scripts": {
-    "onedrive:sync": "cross-env SWC_NODE_PROJECT=./onedrive/tsconfig.json node --import ./register.js src/index.ts"
+    "onedrive:sync": "cross-env SWC_NODE_PROJECT=./tsconfig.json node --import ./register.js src/index.ts"
   },
   "dependencies": {
     "@azure/msal-node": "2.14.0",

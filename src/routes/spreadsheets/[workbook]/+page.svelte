@@ -9,7 +9,7 @@
 
 	const {meta, worksheets} = data;
 	const keys = Object.keys(meta.sheets);
-	const names = keys.map(key => meta.sheets[key][0]);
+	const names = keys.map(key => meta.sheets[key].name);
 </script>
 
 <Meta title={`Spreadsheet: ${meta.name}`} author="Redfire"/>
