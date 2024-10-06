@@ -12,7 +12,7 @@ runs:
       uses: actions/setup-node@v4
       with:
         node-version: "20"
-        cache: yarn
+        cache: pnpm
 
     - name: Setup Rust
       uses: dtolnay/rust-toolchain@stable
@@ -28,13 +28,13 @@ runs:
 
     - name: Install Dependencies
       shell: bash
-      run: yarn install --immutable
+      run: pnpm install --frozen-lockfile
 
     - name: Build with Vite
       env:
         ROOT_DIRECTORY: /home/runner/work/silicon/silicon/
       shell: bash
-      run: yarn build
+      run: pnpm build
 
     - name: Upload Artifact
       uses: actions/upload-pages-artifact@v3

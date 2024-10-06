@@ -4,15 +4,16 @@
 	"private": true,
 	"type": "module",
 	"author": "Redfire",
-	"packageManager": "yarn@4.5.0",
+	"packageManager": "pnpm@9.12.0",
 	"scripts": {
-		"dev": "yarn dev:wasm && vite dev",
+		"dev": "pnpm dev:wasm && vite dev",
 		"dev:wasm": "wasm-pack build ./parser --dev",
-		"build": "yarn build:wasm && vite build",
+		"build": "vite build",
 		"build:wasm": "wasm-pack build ./parser",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"onedrive:sync": "pnpm -C onedrive sync"
 	},
 	"dependencies": {
 		"exceljs": "4.4.0",
@@ -23,7 +24,7 @@
 		"@rollup/pluginutils": "5.1.2",
 		"@sveltejs/adapter-static": "3.0.5",
 		"@sveltejs/enhanced-img": "0.3.8",
-		"@sveltejs/kit": "2.6.1",
+		"@sveltejs/kit": "2.6.2",
 		"@sveltejs/vite-plugin-svelte": "4.0.0-next.7",
 		"@types/node": "22.7.4",
 		"drawio-export-puppeteer": "0.2.0",
@@ -46,8 +47,5 @@
 		"vite-plugin-wasm": "3.3.0",
 		"vite-plugin-wasm-pack": "0.1.12",
 		"wasm-pack": "0.13.0"
-	},
-	"workspaces": [
-		"onedrive"
-	]
+	}
 }

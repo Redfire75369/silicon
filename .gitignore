@@ -10,12 +10,8 @@ vite.config.ts.timestamp-*
 .env.*
 !.env.sample
 
-### Node.js/Yarn ###
-.yarn/*
-!.yarn/plugins
-!.yarn/releases
-node_modules/*
-yarn-error.log
+### Node.js/pnpm ###
+**/node_modules/**
 
 ### Rust ###
 parser/target/**
