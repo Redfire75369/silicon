@@ -8,10 +8,13 @@ runs:
       shell: bash
       run: git submodule update --recursive --remote
 
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+        
     - name: Setup Node
       uses: actions/setup-node@v4
       with:
-        node-version: "20"
+        node-version: 21
         cache: pnpm
 
     - name: Setup Rust
@@ -30,11 +33,13 @@ runs:
       shell: bash
       run: pnpm install --frozen-lockfile
 
-    - name: Build with Vite
+    - name: Build with wasm-pack and Vite
       env:
         ROOT_DIRECTORY: /home/runner/work/silicon/silicon/
       shell: bash
-      run: pnpm build
+      run: |
+        pnpm build:wasm
+        pnpm build
 
     - name: Upload Artifact
       uses: actions/upload-pages-artifact@v3

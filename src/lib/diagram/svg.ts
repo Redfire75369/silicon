@@ -1,5 +1,5 @@
 // @ts-ignore
-import {exportDiagram} from "drawio-export-puppeteer";
+import Exporter from "@redfire/drawio-export";
 import {existsSync} from "fs";
 import {mkdir, readFile, stat, writeFile} from "fs/promises";
 import {resolve} from "path";
@@ -11,6 +11,8 @@ import {cacheDir, contentDir} from "$lib/directory.server";
 type Saves = Record<string, {
 	save: (key: string, variant: Variant) => void
 }>;
+
+const exporter = await Exporter.launch();
 
 const saves: Saves = {
 	mesh: {
@@ -32,7 +34,7 @@ const saves: Saves = {
 
 			const diagram = await readFile(diagramFile, {encoding: "utf8"});
 			const diagrams: string[] = await Promise.all(dies.map(function (_, index) {
-				return exportDiagram(diagram, start + index, "svg");
+				return exporter.exportSvg(diagram, start + index);
 			}));
 
 			const generatedDir = resolve(contentDir, "diagrams", "generated", "mesh");
