@@ -38,6 +38,7 @@ runs:
         ROOT_DIRECTORY: /home/runner/work/silicon/silicon/
       shell: bash
       run: |
+        pnpm playwright install --with-deps firefox
         pnpm build:wasm
         pnpm build
 
